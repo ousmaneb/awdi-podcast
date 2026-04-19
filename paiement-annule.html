@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paiement annulé — Awdi Podcast</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=11" />
+  <link rel="stylesheet" href="css/enhancements.css?v=11" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png" />
+  <style>
+    .cancel-wrap {
+      min-height: 80vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #F8FAFB 0%, #FFFFFF 100%);
+    }
+    .cancel-card {
+      background: var(--white); border-radius: 24px;
+      padding: 56px 48px; max-width: 520px; width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 60px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .cancel-icon {
+      width: 72px; height: 72px;
+      background: #FEF3C7; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .cancel-card h1 { font-size: 26px; font-weight: 800; color: var(--text-dark); margin-bottom: 14px; }
+    .cancel-card p  { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 12px; }
+    .cancel-divider { height: 1px; background: rgba(0,0,0,0.07); margin: 24px 0; }
+    .cancel-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+    @media (max-width: 480px) { .cancel-card { padding: 36px 24px; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" role="navigation">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo1.png" alt="Awdi Podcast" class="nav-logo-img logo-light" />
+      <img src="assets/logo2.png" alt="Awdi Podcast" class="nav-logo-img logo-dark" />
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="videos.html">Vidéos</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="rendez-vous.html" class="nav-cta">Prendre RDV</a></li>
+    </ul>
+    <button class="nav-mobile-btn" aria-label="Menu" aria-expanded="false">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+
+  <div class="cancel-wrap">
+    <div class="cancel-card">
+
+      <div class="cancel-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </div>
+
+      <h1>Paiement annulé</h1>
+      <p>Votre paiement a été annulé. <strong>Aucun montant n'a été débité</strong> de votre compte.</p>
+      <p>Si vous avez rencontré un problème ou si vous avez des questions, n'hésitez pas à nous contacter — nous sommes là pour vous aider.</p>
+
+      <div class="cancel-divider"></div>
+
+      <p style="font-size:14px;color:var(--text-light);">Vous pouvez réessayer à tout moment ou commencer par la session découverte gratuite pour faire connaissance sans engagement.</p>
+
+      <div class="cancel-actions">
+        <a href="services.html" class="btn btn-primary">Réessayer</a>
+        <a href="rendez-vous.html" class="btn btn-secondary">Session gratuite</a>
+        <a href="contact.html" class="btn btn-secondary">Nous contacter</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/cms.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
