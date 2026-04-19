@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Awdi Podcast</title>
+  <meta name="description" content="Contactez Awdi Podcast pour toute question, collaboration ou demande d'information." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/enhancements.css" />
+  <style>
+    .contact-form-card { background:var(--white); border:1px solid rgba(46,155,91,0.12); border-radius:var(--radius-lg); padding:40px; box-shadow:var(--shadow-sm); }
+    .subject-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-bottom:24px; }
+    .subject-btn { padding:11px 14px; border:2px solid rgba(46,155,91,0.15); border-radius:var(--radius-sm); background:var(--white); color:var(--text-mid); font-size:13px; font-weight:600; cursor:pointer; transition:var(--transition); font-family:inherit; text-align:center; display:flex; align-items:center; justify-content:center; gap:8px; }
+    .subject-btn svg { flex-shrink:0; }
+    .subject-btn:hover, .subject-btn.selected { border-color:var(--green-primary); background:var(--green-pale); color:var(--green-dark); }
+  </style>
+</head>
+<body>
+
+  <div class="emergency-banner" role="alert">
+    <span class="emergency-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+    Si vous êtes en situation d'urgence ou en danger immédiat, veuillez contacter les services d'urgence (<strong>15, 18 ou 112</strong>) ou une <a href="https://www.psycom.org/sinformer-sur-la-sante-mentale/les-lignes-decoute/" target="_blank" rel="noopener">ligne d'assistance</a>.
+  </div>
+
+  <nav class="navbar" role="navigation">
+    <a href="index.html" class="nav-logo"><img src="assets/logo1.png" alt="Awdi Podcast" class="nav-logo-img" /></a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="videos.html">Vidéos</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="rendez-vous.html" class="nav-cta">Prendre RDV</a></li>
+    </ul>
+    <button class="nav-mobile-btn" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  </nav>
+
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="index.html">Accueil</a> &rsaquo; Contact</div>
+    <h1>Parlons-nous</h1>
+    <p>Une question, une idée de collaboration, un retour ? Je lis chaque message avec attention et je réponds avec bienveillance.</p>
+  </div>
+
+  <section>
+    <div class="contact-grid">
+
+      <!-- INFOS CONTACT -->
+      <div>
+        <h3 style="font-size:20px;font-weight:800;color:var(--text-dark);margin-bottom:28px;">Comment me joindre</h3>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <h4>E-mail</h4>
+            <a href="mailto:contact@awdipodcast.fr">contact@awdipodcast.fr</a>
+            <p>Réponse sous 48h en semaine</p>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <div>
+            <h4>Instagram</h4>
+            <a href="https://www.instagram.com/awdi.podcast/" target="_blank" rel="noopener">@awdi.podcast</a>
+            <p>Messages directs ouverts</p>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"/></svg>
+          </div>
+          <div>
+            <h4>TikTok</h4>
+            <a href="https://www.tiktok.com/@awdi_podcast" target="_blank" rel="noopener">@awdi_podcast</a>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </div>
+          <div>
+            <h4>Facebook</h4>
+            <a href="https://www.facebook.com/people/Awdi-Podcast/61581534275335/" target="_blank" rel="noopener">Awdi Podcast</a>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div>
+            <h4>Prendre rendez-vous</h4>
+            <a href="rendez-vous.html">Accéder au calendrier de réservation</a>
+            <p>Pour une séance individuelle</p>
+          </div>
+        </div>
+
+        <!-- NOTE URGENCE -->
+        <div style="background:#FFF5F5;border:2px solid #FCA5A5;border-radius:var(--radius-md);padding:20px;margin-top:32px;display:flex;gap:12px;align-items:flex-start;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <p style="font-size:14px;color:#B91C1C;line-height:1.7;margin:0;"><strong>Important :</strong> Ce formulaire n'est pas un service d'urgence. Si vous êtes en crise, appelez le <strong>3114</strong> (disponible 24h/24) ou le <strong>15 / 112</strong>.</p>
+        </div>
+
+        <!-- RÉSEAUX SOCIAUX -->
+        <div style="margin-top:32px;">
+          <h4 style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:14px;text-transform:uppercase;letter-spacing:1px;">Retrouvez le podcast</h4>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" target="_blank" rel="noopener" class="platform-link" style="font-size:13px;padding:8px 14px;gap:8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              Spotify
+            </a>
+            <a href="https://www.youtube.com/@Awdi_podcast" target="_blank" rel="noopener" class="platform-link" style="font-size:13px;padding:8px 14px;gap:8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              YouTube
+            </a>
+            <a href="https://www.amazon.fr/-/en/dp/B0GLRBMSWW/" target="_blank" rel="noopener" class="platform-link" style="font-size:13px;padding:8px 14px;gap:8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#FF9900"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.047-.872-1.234-1.276-1.814-2.106-1.734 1.768-2.962 2.297-5.209 2.297-2.661 0-4.731-1.642-4.731-4.927 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.099v-.41c0-.753.06-1.642-.383-2.294-.385-.584-1.124-.826-1.775-.826-1.205 0-2.277.618-2.54 1.897-.054.285-.261.567-.549.582l-3.061-.333c-.259-.056-.548-.266-.472-.661C5.86 1.756 8.857.5 11.5.5c1.35 0 3.116.36 4.181 1.384 1.353 1.264 1.223 2.95 1.223 4.784v4.332c0 1.302.541 1.875 1.048 2.576.179.251.219.552-.01.738l-2.798 2.481zm3.362 1.061c-4.493 3.218-11.026 4.927-16.632 2.621C1.8 20.368.557 19.144.155 17.685c-.182-.658.37-1.229 1.013-.985 3.761 1.386 7.965 2.232 12.258 1.756 2.862-.316 5.923-1.212 8.445-2.579.413-.234.835.245.634.979z"/></svg>
+              Amazon
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORMULAIRE -->
+      <div class="contact-form-card">
+        <h3 style="font-size:20px;font-weight:800;color:var(--text-dark);margin-bottom:8px;">Envoyez un message</h3>
+        <p style="font-size:15px;color:var(--text-mid);margin-bottom:28px;">Je vous réponds personnellement, dans un délai de 48h.</p>
+
+        <p style="font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:12px;">Quel est l'objet de votre message ?</p>
+        <div class="subject-grid" id="subject-grid">
+          <button class="subject-btn selected" data-subject="Question générale">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Question
+          </button>
+          <button class="subject-btn" data-subject="Demande de RDV">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Rendez-vous
+          </button>
+          <button class="subject-btn" data-subject="Collaboration">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Collaboration
+          </button>
+          <button class="subject-btn" data-subject="Témoignage">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Témoignage
+          </button>
+          <button class="subject-btn" data-subject="Presse & médias">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Presse
+          </button>
+          <button class="subject-btn" data-subject="Autre">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Autre
+          </button>
+        </div>
+
+        <form id="contact-form" novalidate>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required />
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" placeholder="Votre nom" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Adresse e-mail</label>
+            <input type="email" id="email" name="email" placeholder="votre@email.fr" required />
+          </div>
+          <div class="form-group">
+            <label for="sujet">Sujet</label>
+            <input type="text" id="sujet" name="sujet" placeholder="Résumez votre demande en quelques mots" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Écrivez votre message ici. Prenez votre temps, soyez à l'aise." required></textarea>
+          </div>
+          <div class="form-group" style="display:flex;align-items:flex-start;gap:12px;margin-top:4px;">
+            <input type="checkbox" id="rgpd" name="rgpd" required style="width:auto;margin-top:4px;flex-shrink:0;accent-color:var(--green-primary);" />
+            <label for="rgpd" style="font-size:13px;color:var(--text-mid);font-weight:400;cursor:pointer;">J'accepte que mes données soient utilisées pour traiter ma demande. Elles ne seront jamais partagées avec des tiers.</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:8px;">
+            Envoyer le message
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo1.png" alt="Awdi Podcast" class="footer-logo" />
+        <p>Un espace bienveillant pour parler de santé mentale, d'émotions et de bien-être.</p>
+        <div class="social-links">
+          <a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" class="social-link" target="_blank" rel="noopener" aria-label="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+          <a href="https://www.youtube.com/@Awdi_podcast" class="social-link" target="_blank" rel="noopener" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          <a href="https://www.instagram.com/awdi.podcast/" class="social-link" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="https://www.tiktok.com/@awdi_podcast" class="social-link" target="_blank" rel="noopener" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34l.04-8.22a8.16 8.16 0 0 0 4.77 1.52V5.17a4.85 4.85 0 0 1-1.05-.48z"/></svg></a>
+          <a href="https://www.facebook.com/people/Awdi-Podcast/61581534275335/" class="social-link" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="blog.html">Blog</a></li><li><a href="videos.html">Vidéos</a></li><li><a href="services.html">Services</a></li></ul></div>
+      <div class="footer-col"><h4>Ressources</h4><ul><li><a href="rendez-vous.html">Prendre RDV</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Urgence</h4><ul><li><a href="tel:3114" style="color:#A8E6C3;font-weight:700;">3114 — Prévention suicide</a></li><li><a href="tel:15">15 — SAMU</a></li><li><a href="tel:112">112 — Urgences</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Awdi Podcast · Tid Barry · Tous droits réservés</span>
+      <span><a href="contact.html">Contact</a> &nbsp;·&nbsp; <a href="#">Mentions légales</a> &nbsp;·&nbsp; <a href="#">Politique de confidentialité</a></span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.querySelectorAll('.subject-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.subject-btn').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+        const sujetInput = document.getElementById('sujet');
+        if (sujetInput && !sujetInput.value) sujetInput.value = this.dataset.subject;
+      });
+    });
+  </script>
+</body>
+</html>

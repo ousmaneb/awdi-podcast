@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vidéos — Awdi Podcast</title>
+  <meta name="description" content="Regardez les épisodes d'Awdi Podcast en vidéo. Des conversations sincères sur la santé mentale, disponibles sur YouTube." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/enhancements.css" />
+  <style>
+    .video-main-feature {
+      background: var(--text-dark);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+    .video-main-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .video-main-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+    .video-main-info {
+      padding: 28px 32px;
+      color: white;
+    }
+    .video-main-info h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .video-main-info p {
+      opacity: 0.75;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .video-playlist-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+      text-decoration: none;
+      color: inherit;
+    }
+    .video-playlist-item:hover, .video-playlist-item.active {
+      background: var(--green-pale);
+      border-color: rgba(46,155,91,0.2);
+    }
+    .video-thumb {
+      width: 120px;
+      height: 68px;
+      background: linear-gradient(135deg, var(--green-pale), #C8E6D4);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .video-thumb svg {
+      width: 28px;
+      height: 28px;
+      color: var(--green-primary);
+    }
+    .video-playlist-info h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .video-playlist-info p {
+      font-size: 12px;
+      color: var(--text-light);
+    }
+    .videos-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .playlist-sidebar {
+      background: var(--white);
+      border: 1px solid rgba(46,155,91,0.1);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .playlist-header {
+      padding: 16px 20px;
+      background: var(--green-pale);
+      border-bottom: 1px solid rgba(46,155,91,0.1);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--green-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .playlist-header svg {
+      width: 16px;
+      height: 16px;
+      color: var(--green-primary);
+    }
+    .playlist-items {
+      padding: 8px;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+    .yt-placeholder {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #0f0f0f;
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+    }
+    .yt-placeholder img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+    }
+    .yt-placeholder .yt-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 68px;
+      height: 48px;
+      background: #FF0000;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .yt-placeholder:hover .yt-play {
+      background: #cc0000;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    .yt-placeholder .yt-label {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+    }
+    @media (max-width: 768px) {
+      .videos-layout {
+        grid-template-columns: 1fr;
+      }
+      .playlist-sidebar {
+        order: 2;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="emergency-banner" role="alert">
+    <span class="emergency-icon">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </span>
+    Si vous êtes en situation d'urgence ou en danger immédiat, veuillez contacter les services d'urgence (<strong>15, 18 ou 112</strong>) ou une <a href="https://www.psycom.org/sinformer-sur-la-sante-mentale/les-lignes-decoute/" target="_blank" rel="noopener">ligne d'assistance</a>.
+  </div>
+
+  <nav class="navbar" role="navigation">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo1.png" alt="Awdi Podcast" class="nav-logo-img" />
+      <div class="nav-logo-text">
+        <span class="brand">AWDI</span>
+        <span class="tagline">Tid Barry</span>
+      </div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="videos.html">Vidéos</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="rendez-vous.html" class="nav-cta">Prendre RDV</a></li>
+    </ul>
+    <button class="nav-mobile-btn" aria-label="Menu" aria-expanded="false">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+
+  <div class="page-hero">
+    <div class="breadcrumb"><a href="index.html">Accueil</a> &rsaquo; Vidéos</div>
+    <h1>Les épisodes en vidéo</h1>
+    <p>Retrouvez tous les épisodes d'Awdi Podcast en version vidéo. Des échanges sincères, à regarder à votre rythme.</p>
+  </div>
+
+  <section>
+    <div class="container">
+
+      <!-- LECTEUR PRINCIPAL + PLAYLIST -->
+      <div class="videos-layout">
+        <div>
+          <div class="video-main-feature">
+            <div class="video-main-embed" id="main-player">
+              <iframe
+                src="https://www.youtube.com/embed/OyLgZpoeJFM?rel=0"
+                title="Awdi Podcast — Dernier épisode"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy">
+              </iframe>
+            </div>
+            <div class="video-main-info">
+              <h2>Awdi Podcast — Épisodes en vidéo</h2>
+              <p>Des conversations profondes et bienveillantes autour de la santé mentale, animées par Diariou Barry.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLAYLIST SIDEBAR -->
+        <div class="playlist-sidebar">
+          <div class="playlist-header">
+            <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+            Liste des épisodes
+          </div>
+          <div class="playlist-items">
+            <div class="video-playlist-item active">
+              <div class="video-thumb" style="overflow:hidden;padding:0;">
+                <img src="https://img.youtube.com/vi/OyLgZpoeJFM/mqdefault.jpg" alt="Épisode 1" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="video-playlist-info">
+                <h4>Épisode — Pourquoi est-il difficile de parler de ses émotions ?</h4>
+                <p>Awdi Podcast · Santé mentale</p>
+              </div>
+            </div>
+            <div class="video-playlist-item">
+              <div class="video-thumb" style="overflow:hidden;padding:0;">
+                <img src="https://img.youtube.com/vi/HKIVZUo4OIk/mqdefault.jpg" alt="Épisode 2" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="video-playlist-info">
+                <h4>Épisode — L'anxiété : comprendre pour mieux vivre</h4>
+                <p>Awdi Podcast · Anxiété</p>
+              </div>
+            </div>
+            <div class="video-playlist-item">
+              <div class="video-thumb" style="overflow:hidden;padding:0;">
+                <img src="https://img.youtube.com/vi/b5oaPn9d7VQ/mqdefault.jpg" alt="Épisode 3" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="video-playlist-info">
+                <h4>Épisode — Corps, règles et tabous : parlons-en</h4>
+                <p>Awdi Podcast · Corps &amp; Identité</p>
+              </div>
+            </div>
+            <div class="video-playlist-item">
+              <div class="video-thumb" style="overflow:hidden;padding:0;">
+                <img src="https://img.youtube.com/vi/PWM1SpS78WE/mqdefault.jpg" alt="Épisode 4" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="video-playlist-info">
+                <h4>Épisode — L'éducation émotionnelle qu'on n'a pas reçue</h4>
+                <p>Awdi Podcast · Éducation</p>
+              </div>
+            </div>
+            <div style="padding:16px;text-align:center;">
+              <a href="https://www.youtube.com/@Awdi_podcast" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:13px;padding:10px 20px;">Voir tous les épisodes sur YouTube →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRILLE VIDÉOS RÉCENTES -->
+      <div class="section-header" style="margin-top:60px;">
+        <span class="section-label">Dernières sorties</span>
+        <h2>À ne pas manquer</h2>
+      </div>
+      <div class="video-grid">
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/HKIVZUo4OIk?rel=0" title="Awdi Podcast" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-card-body">
+            <span class="blog-tag">Émotions</span>
+            <h3>Mettre des mots sur ce qu'on ressent</h3>
+            <p>Un épisode sur le pouvoir de nommer ses émotions.</p>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-embed">
+            <iframe src="https://www.youtube.com/embed/b5oaPn9d7VQ?rel=0" title="Awdi Podcast" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-card-body">
+            <span class="blog-tag">Bien-être</span>
+            <h3>Prendre soin de soi sans culpabilité</h3>
+            <p>Des pistes concrètes pour intégrer le bien-être dans son quotidien.</p>
+          </div>
+        </div>
+        <div class="video-card" style="background:var(--green-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;">
+          <div style="text-align:center;padding:32px;">
+            <div style="width:72px;height:72px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+              <svg width="36" height="36" fill="none" stroke="var(--green-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            </div>
+            <h3 style="color:var(--green-dark);margin-bottom:12px;">Et bien d'autres…</h3>
+            <p style="color:var(--text-mid);font-size:15px;margin-bottom:20px;">Tous nos épisodes sont disponibles sur notre chaîne YouTube.</p>
+            <a href="https://www.youtube.com/@Awdi_podcast" target="_blank" rel="noopener" class="btn btn-primary">Voir la chaîne complète</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA ABONNEMENT -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ne manquez plus aucun épisode</h2>
+      <p>Abonnez-vous à la chaîne YouTube d'Awdi Podcast et activez les notifications pour être alerté·e à chaque nouvelle sortie.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://www.youtube.com/@Awdi_podcast" target="_blank" rel="noopener" class="btn btn-lg" style="background:white;color:#FF0000;font-weight:700;display:inline-flex;align-items:center;gap:8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+          S'abonner sur YouTube
+        </a>
+        <a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" target="_blank" rel="noopener" class="btn btn-lg btn-outline" style="display:inline-flex;align-items:center;gap:8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--green-primary)"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Écouter sur Spotify
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo1.png" alt="Awdi Podcast" class="footer-logo" />
+        <p>Un espace bienveillant pour parler de santé mentale, d'émotions et de bien-être.</p>
+        <div class="social-links">
+          <a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" class="social-link" target="_blank" rel="noopener" title="Spotify">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@Awdi_podcast" class="social-link" target="_blank" rel="noopener" title="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/awdi.podcast/" class="social-link" target="_blank" rel="noopener" title="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="url(#ig-grad-videos)"><defs><linearGradient id="ig-grad-videos" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#f09433"/><stop offset="25%" style="stop-color:#e6683c"/><stop offset="50%" style="stop-color:#dc2743"/><stop offset="75%" style="stop-color:#cc2366"/><stop offset="100%" style="stop-color:#bc1888"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@awdi_podcast" class="social-link" target="_blank" rel="noopener" title="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.29 6.29 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/people/Awdi-Podcast/61581534275335/" class="social-link" target="_blank" rel="noopener" title="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="videos.html">Vidéos</a></li>
+          <li><a href="services.html">Services</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <ul>
+          <li><a href="rendez-vous.html">Prendre RDV</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Urgence</h4>
+        <ul>
+          <li><a href="tel:3114" style="color:#A8E6C3;font-weight:700;">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:4px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.41 2 2 0 0 1 3.59 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 5.55 5.55l.73-.73a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+            3114
+          </a></li>
+          <li><a href="tel:15">15 — SAMU</a></li>
+          <li><a href="tel:112">112 — Urgences</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Awdi Podcast · Tid Barry</span>
+      <span><a href="contact.html">Contact</a> &nbsp;·&nbsp; <a href="#">Mentions légales</a></span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
