@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/enhancements.css" />
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 </head>
 <body>
 
@@ -24,7 +26,7 @@
   <!-- NAVIGATION -->
   <nav class="navbar" role="navigation" aria-label="Navigation principale">
     <a href="index.html" class="nav-logo" aria-label="Accueil Awdi Podcast">
-      <img src="assets/logo1.png" alt="Awdi Podcast" class="nav-logo-img" />
+      <img src="assets/logo1.png" alt="Awdi Podcast" class="nav-logo-img logo-light" /><img src="assets/logo2.png" alt="Awdi Podcast" class="nav-logo-img logo-dark" />
     </a>
     <ul class="nav-links" role="list">
       <li><a href="index.html">Accueil</a></li>
@@ -45,7 +47,12 @@
       <div class="hero-content">
         <div class="hero-badge">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
-          Le podcast qui libère la parole
+          Santé mentale &amp; Prise de conscience
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--text-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;">
+          <span style="width:20px;height:1px;background:var(--green-primary);display:inline-block;"></span>
+          Peulh · Fulani · Poulo
+          <span style="width:20px;height:1px;background:var(--green-primary);display:inline-block;"></span>
         </div>
         <h1 id="hero-title">Parlons de <span class="highlight">santé mentale</span> avec cœur</h1>
         <p>Awdi Podcast est un espace bienveillant où l'on aborde les sujets qui touchent vraiment : les émotions, l'éducation, les tabous, le bien-être. Des échanges sincères pour mieux se comprendre.</p>
@@ -56,7 +63,7 @@
       </div>
       <div class="hero-image">
         <div class="logo-showcase">
-          <img src="assets/logo1.png" alt="Awdi Podcast" class="hero-logo-img" />
+          <img src="assets/logo1.png" alt="Awdi Podcast" class="hero-logo-img logo-light" /><img src="assets/logo2.png" alt="Awdi Podcast" class="hero-logo-img logo-dark" />
         </div>
         <div class="floating-badge top-right">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
@@ -376,8 +383,16 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="assets/logo1.png" alt="Awdi Podcast" class="footer-logo" />
-        <p>Un espace bienveillant pour parler de santé mentale, d'émotions et de bien-être. Parce que chaque parole libérée compte.</p>
+        <img src="assets/logo1.png" alt="Awdi Podcast" class="footer-logo logo-light" /><img src="assets/logo2.png" alt="Awdi Podcast" class="footer-logo logo-dark" />
+        <div style="margin-bottom:16px;">
+          <p style="font-size:15px;font-weight:800;color:var(--text-dark);letter-spacing:0.3px;margin-bottom:4px;">Santé mentale &amp; Prise de conscience</p>
+          <p style="font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:8px;">Un espace bienveillant pour parler de santé mentale, d'émotions et de bien-être.</p>
+          <p style="font-size:11px;font-weight:700;color:var(--green-primary);letter-spacing:2px;text-transform:uppercase;">Peulh · Fulani · Poulo</p>
+        </div>
+        <a href="mailto:awdi.tidbarry@gmail.com" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-mid);text-decoration:none;margin-bottom:20px;transition:color 0.2s ease;" onmouseover="this.style.color='var(--green-primary)'" onmouseout="this.style.color='var(--text-mid)'">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          awdi.tidbarry@gmail.com
+        </a>
         <div class="social-links">
           <a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" class="social-link" target="_blank" rel="noopener" aria-label="Spotify">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>

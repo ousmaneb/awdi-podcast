@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/enhancements.css" />
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 </head>
 <body>
 
@@ -22,7 +24,7 @@
 
   <nav class="navbar" role="navigation" aria-label="Navigation principale">
     <a href="index.html" class="nav-logo" aria-label="Accueil Awdi Podcast">
-      <img src="assets/logo1.png" alt="Awdi Podcast" class="nav-logo-img" />
+      <img src="assets/logo1.png" alt="Awdi Podcast" class="nav-logo-img logo-light" /><img src="assets/logo2.png" alt="Awdi Podcast" class="nav-logo-img logo-dark" />
     </a>
     <ul class="nav-links" role="list">
       <li><a href="index.html">Accueil</a></li>
@@ -61,9 +63,15 @@
           <p style="font-size:17px;color:var(--text-mid);line-height:1.8;margin-bottom:16px;">
             <strong>Diariou Barry</strong>, à travers ce podcast, a voulu créer un espace différent. Un lieu où l'on peut dire "je souffre", "je ne comprends pas ce que je ressens"… et être entendu, sans être jugé.
           </p>
-          <p style="font-size:17px;color:var(--text-mid);line-height:1.8;margin-bottom:32px;">
-            Awdi, en langue peule, évoque un sens profond de retour à soi, de reconnexion. C'est exactement ce que ce podcast propose : revenir à soi, avec douceur.
+          <p style="font-size:17px;color:var(--text-mid);line-height:1.8;margin-bottom:20px;">
+            <strong style="color:var(--green-dark);">Awdi</strong>, en langue peule (Fulfulde), évoque un sens profond de retour à soi, de reconnexion. C'est exactement ce que ce podcast propose : revenir à soi, avec douceur.
           </p>
+          <div style="display:flex;align-items:center;gap:12px;background:var(--green-pale);border-left:4px solid var(--green-primary);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:16px 20px;margin-bottom:32px;">
+            <div>
+              <p style="font-size:13px;font-weight:800;color:var(--green-dark);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Peulh · Fulani · Poulo</p>
+              <p style="font-size:14px;color:var(--text-mid);line-height:1.6;margin:0;">Un podcast ancré dans la richesse culturelle du peuple Peulh — aussi appelé Fulani ou Poulo — pour aborder la santé mentale avec les mots et la sensibilité de cette communauté.</p>
+            </div>
+          </div>
           <ul class="values-list">
             <li>
               <div class="value-icon">
@@ -148,9 +156,19 @@
         <p style="font-size:17px;color:var(--text-mid);line-height:1.9;margin-bottom:28px;">
           "Je fais ce podcast parce que j'aurais aimé trouver un espace comme celui-là quand j'en avais besoin. Si ça peut aider une seule personne à se sentir moins seule, alors c'est déjà tout ce qui compte."
         </p>
-        <blockquote style="border-left:4px solid var(--green-primary);padding-left:20px;color:var(--green-dark);font-style:italic;font-size:18px;font-weight:600;">
+        <blockquote style="border-left:4px solid var(--green-primary);padding-left:20px;color:var(--green-dark);font-style:italic;font-size:18px;font-weight:600;margin-bottom:28px;">
           "Awdi, c'est revenir à soi. Et ça commence par oser écouter."
         </blockquote>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding-top:20px;border-top:1px solid rgba(46,155,91,0.15);">
+          <span style="font-size:12px;font-weight:700;color:var(--green-primary);letter-spacing:2px;text-transform:uppercase;">Santé mentale &amp; Prise de conscience</span>
+          <span style="color:rgba(46,155,91,0.3);">·</span>
+          <span style="font-size:12px;font-weight:600;color:var(--text-light);letter-spacing:1px;">Peulh · Fulani · Poulo</span>
+          <span style="color:rgba(46,155,91,0.3);">·</span>
+          <a href="mailto:awdi.tidbarry@gmail.com" style="font-size:13px;color:var(--text-mid);text-decoration:none;display:inline-flex;align-items:center;gap:5px;" onmouseover="this.style.color='var(--green-primary)'" onmouseout="this.style.color='var(--text-mid)'">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            awdi.tidbarry@gmail.com
+          </a>
+        </div>
       </div>
       <div style="text-align:center;margin-top:40px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
         <a href="rendez-vous.html" class="btn btn-primary">Prendre rendez-vous</a>
@@ -174,8 +192,8 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="assets/logo1.png" alt="Awdi Podcast" class="footer-logo" />
-        <p>Un espace bienveillant pour parler de santé mentale, d'émotions et de bien-être.</p>
+        <img src="assets/logo1.png" alt="Awdi Podcast" class="footer-logo logo-light" /><img src="assets/logo2.png" alt="Awdi Podcast" class="footer-logo logo-dark" />
+        <div style="margin-bottom:16px;"><p style="font-size:15px;font-weight:800;color:var(--text-dark);letter-spacing:0.3px;margin-bottom:4px;">Santé mentale &amp; Prise de conscience</p><p style="font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:8px;">Un espace bienveillant pour parler de santé mentale, d'émotions et de bien-être.</p><p style="font-size:11px;font-weight:700;color:var(--green-primary);letter-spacing:2px;text-transform:uppercase;">Peulh · Fulani · Poulo</p></div><a href="mailto:awdi.tidbarry@gmail.com" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-mid);text-decoration:none;margin-bottom:20px;">awdi.tidbarry@gmail.com</a>
         <div class="social-links">
           <a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" class="social-link" target="_blank" rel="noopener" aria-label="Spotify">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>

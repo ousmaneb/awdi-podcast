@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Awdi Podcast</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--g:#2E9B5B;--gd:#1B6B3A;--gl:#E8F5EE;--sb:#111827;--sbh:#1f2937;--t:#1A1A2E;--tm:#4A5568;--tl:#718096;--bg:#F8FAFB;--w:#fff;--b:#E2E8F0;--r:#EF4444;--rad:12px;--sh:0 2px 8px rgba(0,0,0,.08);--shl:0 8px 32px rgba(0,0,0,.12)}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t)}
+    /* LOGIN */
+    #login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--gd),var(--g))}
+    .lcard{background:#fff;border-radius:20px;padding:48px 40px;width:100%;max-width:400px;box-shadow:0 24px 60px rgba(0,0,0,.2);text-align:center}
+    .lcard h1{font-size:22px;font-weight:800;color:var(--gd)}
+    .lcard p{font-size:13px;color:var(--tl);margin-top:4px}
+    .lform{text-align:left;margin-top:28px}
+    .lform label{font-size:13px;font-weight:600;color:var(--tm);display:block;margin-bottom:6px}
+    .lform input{width:100%;padding:12px 16px;border:2px solid var(--b);border-radius:10px;font-size:15px;outline:none;transition:border-color .2s;font-family:inherit}
+    .lform input:focus{border-color:var(--g)}
+    .lbtn{width:100%;padding:14px;margin-top:20px;background:var(--g);color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s}
+    .lbtn:hover{background:var(--gd)}
+    .lerr{color:var(--r);font-size:13px;margin-top:10px;display:none;text-align:center}
+    /* LAYOUT */
+    #app{display:none;min-height:100vh}
+    #app.on{display:flex}
+    /* SIDEBAR */
+    .sb{width:252px;flex-shrink:0;background:var(--sb);display:flex;flex-direction:column;min-height:100vh;position:sticky;top:0;height:100vh;overflow-y:auto}
+    .sb-brand{padding:22px 18px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .sb-brand .bn{font-size:15px;font-weight:800;color:#fff}
+    .sb-brand .bs{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1.5px;margin-top:2px}
+    .sb-nav{padding:14px 10px;flex:1}
+    .ni{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:9px;cursor:pointer;color:rgba(255,255,255,.6);font-size:13.5px;font-weight:500;transition:all .18s;margin-bottom:2px;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+    .ni:hover{background:var(--sbh);color:rgba(255,255,255,.9)}
+    .ni.act{background:var(--g);color:#fff}
+    .ni svg{flex-shrink:0;opacity:.8}
+    .ni.act svg{opacity:1}
+    .nb{margin-left:auto;background:var(--r);color:#fff;font-size:10px;font-weight:700;border-radius:20px;padding:2px 7px;min-width:20px;text-align:center}
+    .sb-bot{padding:14px 10px;border-top:1px solid rgba(255,255,255,.08)}
+    .sb-bot .ni{color:rgba(255,255,255,.5)}
+    .sb-bot .ni:hover{color:var(--r);background:rgba(239,68,68,.1)}
+    /* MAIN */
+    .main{flex:1;overflow-y:auto;min-height:100vh}
+    .topbar{background:#fff;padding:15px 28px;border-bottom:1px solid var(--b);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+    .topbar-t{font-size:19px;font-weight:800;color:var(--t)}
+    .vsb{display:flex;align-items:center;gap:6px;padding:8px 16px;background:var(--gl);color:var(--gd);border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;font-family:inherit;transition:all .2s}
+    .vsb:hover{background:var(--g);color:#fff}
+    .content{padding:28px}
+    /* PANELS */
+    .pnl{display:none}
+    .pnl.act{display:block}
+    /* DASH CARDS */
+    .dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:18px;margin-bottom:28px}
+    .dc{background:#fff;border-radius:var(--rad);padding:22px;border:1px solid var(--b);box-shadow:var(--sh);display:flex;align-items:center;gap:14px}
+    .di{width:50px;height:50px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .di.gr{background:var(--gl);color:var(--g)}
+    .di.bl{background:#EFF6FF;color:#3B82F6}
+    .di.or{background:#FFF7ED;color:#F59E0B}
+    .di.pu{background:#FAF5FF;color:#8B5CF6}
+    .di.rd{background:#FEF2F2;color:#EF4444}
+    .dn{font-size:26px;font-weight:800;color:var(--t);line-height:1}
+    .dl{font-size:12px;color:var(--tl);margin-top:4px}
+    /* TABLE */
+    .tw{background:#fff;border-radius:var(--rad);border:1px solid var(--b);overflow:hidden;box-shadow:var(--sh)}
+    .th{padding:18px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--b)}
+    .th h3{font-size:15px;font-weight:700;color:var(--t)}
+    .th p{font-size:12px;color:var(--tl);margin-top:2px}
+    table{width:100%;border-collapse:collapse}
+    thead th{padding:11px 14px;text-align:left;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--tl);background:var(--bg);border-bottom:1px solid var(--b)}
+    tbody td{padding:13px 14px;font-size:13.5px;border-bottom:1px solid #F1F5F9;vertical-align:middle}
+    tbody tr:last-child td{border-bottom:none}
+    tbody tr:hover td{background:#FAFAFA}
+    .er td{text-align:center;color:var(--tl);padding:40px;font-size:14px}
+    /* BADGE */
+    .bdg{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700}
+    .bg{background:var(--gl);color:var(--gd)}
+    .bb{background:#EFF6FF;color:#1D4ED8}
+    .bo{background:#FFF7ED;color:#C2410C}
+    .bp{background:#FAF5FF;color:#7C3AED}
+    .br{background:#FEF2F2;color:#B91C1C}
+    .bx{background:#F1F5F9;color:#475569}
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 17px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .18s;font-family:inherit}
+    .bp2{background:var(--g);color:#fff}
+    .bp2:hover{background:var(--gd)}
+    .bs2{background:var(--bg);color:var(--tm);border:1px solid var(--b)}
+    .bs2:hover{background:var(--b)}
+    .bdn{background:#FEF2F2;color:var(--r)}
+    .bdn:hover{background:var(--r);color:#fff}
+    .bsm{padding:6px 11px;font-size:11.5px;border-radius:6px}
+    .bic{padding:7px;width:32px;height:32px;justify-content:center}
+    /* MODAL */
+    .mo{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px;backdrop-filter:blur(4px)}
+    .mo.op{display:flex}
+    .mbox{background:#fff;border-radius:18px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:var(--shl);animation:min .2s ease}
+    .mbox.wide{max-width:660px}
+    @keyframes min{from{opacity:0;transform:scale(.95) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    .mh{padding:22px 26px 0;display:flex;align-items:center;justify-content:space-between}
+    .mh h3{font-size:17px;font-weight:800;color:var(--t)}
+    .mc{width:30px;height:30px;border-radius:50%;border:none;background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--tl);font-size:16px;transition:all .2s;font-family:inherit}
+    .mc:hover{background:#FEF2F2;color:var(--r)}
+    .mb{padding:18px 26px 26px}
+    /* FORM */
+    .fg{margin-bottom:16px}
+    .fg label{font-size:12.5px;font-weight:600;color:var(--tm);display:block;margin-bottom:5px}
+    .fg input,.fg textarea,.fg select{width:100%;padding:10px 13px;border:2px solid var(--b);border-radius:9px;font-size:13.5px;font-family:inherit;outline:none;transition:border-color .2s;background:#fff;color:var(--t)}
+    .fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--g)}
+    .fg textarea{resize:vertical;min-height:84px}
+    .fg .hint{font-size:11px;color:var(--tl);margin-top:3px}
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .fa{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
+    /* STARS */
+    .ss{display:flex;gap:3px}
+    .ss button{background:none;border:none;cursor:pointer;font-size:26px;color:#D1D5DB;transition:color .1s;padding:0;line-height:1}
+    .ss button.on{color:#F59E0B}
+    /* YT PREVIEW */
+    .ytp{border-radius:9px;overflow:hidden;margin-top:10px;display:none}
+    .ytp iframe{width:100%;aspect-ratio:16/9;display:block;border:none}
+    /* STATS EDITOR */
+    .se{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+    .sec{background:#fff;border-radius:var(--rad);padding:22px;border:1px solid var(--b);box-shadow:var(--sh)}
+    .sec label{font-size:12.5px;font-weight:700;color:var(--tm);display:block;margin-bottom:10px}
+    .sec input{width:100%;padding:11px 15px;font-size:26px;font-weight:800;border:2px solid var(--b);border-radius:9px;outline:none;text-align:center;color:var(--gd);transition:border-color .2s;font-family:inherit}
+    .sec input:focus{border-color:var(--g)}
+    .sec .sh{font-size:11px;color:var(--tl);text-align:center;margin-top:5px}
+    /* TOAST */
+    #tst{position:fixed;bottom:22px;right:22px;z-index:9999;background:var(--t);color:#fff;padding:13px 18px;border-radius:11px;font-size:13.5px;font-weight:500;display:flex;align-items:center;gap:9px;box-shadow:var(--shl);transform:translateY(70px);opacity:0;transition:all .4s cubic-bezier(.34,1.56,.64,1);pointer-events:none;max-width:300px}
+    #tst.on{transform:translateY(0);opacity:1}
+    #tst.ok{background:var(--gd)}
+    #tst.er2{background:var(--r)}
+    /* CONFIRM */
+    .co{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px}
+    .co.op{display:flex}
+    .cbox{background:#fff;border-radius:15px;padding:30px;width:100%;max-width:360px;text-align:center;box-shadow:var(--shl)}
+    .ci{width:52px;height:52px;background:#FEF2F2;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;color:var(--r)}
+    .cbox h3{font-size:17px;font-weight:800;margin-bottom:7px}
+    .cbox p{font-size:13.5px;color:var(--tl);margin-bottom:22px;line-height:1.6}
+    .ca{display:flex;gap:10px;justify-content:center}
+    /* MISC */
+    .av{width:34px;height:34px;border-radius:50%;background:var(--g);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0}
+    .tr{max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+    /* SUB CARDS */
+    .sc{display:grid;gap:14px}
+    .scard{background:#fff;border-radius:var(--rad);padding:18px;border:1px solid var(--b);box-shadow:var(--sh);cursor:pointer;transition:all .18s}
+    .scard:hover{border-color:var(--g);box-shadow:0 4px 16px rgba(46,155,91,.12)}
+    .sch{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+    .sct{font-weight:700;font-size:14px;color:var(--t)}
+    .scd{font-size:11.5px;color:var(--tl);margin-left:auto}
+    .scb{font-size:13px;color:var(--tm);line-height:1.55}
+    .sff{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+    .sf{padding:6px 13px;border-radius:20px;border:2px solid var(--b);background:#fff;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--tm);transition:all .18s;font-family:inherit}
+    .sf.act{border-color:var(--g);background:var(--gl);color:var(--gd)}
+    .sub-det{background:var(--bg);border-radius:9px;padding:14px;margin-top:10px}
+    .sdf{display:flex;gap:8px;margin-bottom:7px;font-size:13px}
+    .sdf:last-child{margin-bottom:0}
+    .sdk{font-weight:600;color:var(--tm);min-width:130px;flex-shrink:0}
+    .sdv{color:var(--t)}
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+  <div class="lcard">
+    <div style="width:58px;height:58px;background:linear-gradient(135deg,#1B6B3A,#2E9B5B);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/></svg>
+    </div>
+    <h1>Awdi Podcast</h1>
+    <p>Panneau d'administration</p>
+    <div class="lform">
+      <div class="fg"><label>Mot de passe</label><input type="password" id="pwd" placeholder="••••••••" /></div>
+      <button class="lbtn" id="lbtn">Se connecter</button>
+      <div class="lerr" id="lerr">Mot de passe incorrect.</div>
+    </div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <aside class="sb">
+    <div class="sb-brand"><div class="bn">Awdi Podcast</div><div class="bs">Administration</div></div>
+    <nav class="sb-nav">
+      <button class="ni act" data-s="dashboard"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Tableau de bord</button>
+      <button class="ni" data-s="testi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Témoignages</button>
+      <button class="ni" data-s="videos"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Vidéos YouTube</button>
+      <button class="ni" data-s="articles"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Articles de blog</button>
+      <button class="ni" data-s="stats"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Statistiques</button>
+      <button class="ni" data-s="subs"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Soumissions<span class="nb" id="sbdg" style="display:none"></span></button>
+    </nav>
+    <div class="sb-bot"><button class="ni" id="logoutbtn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Déconnexion</button></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="topbar-t" id="ttitle">Tableau de bord</div>
+      <a href="index.html" target="_blank" class="vsb"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Voir le site</a>
+    </div>
+    <div class="content">
+
+      <!-- DASHBOARD -->
+      <div class="pnl act" id="pnl-dashboard">
+        <div class="dgrid">
+          <div class="dc"><div class="di gr"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><div class="dn" id="dt">0</div><div class="dl">Témoignages</div></div></div>
+          <div class="dc"><div class="di bl"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div><div class="dn" id="dv">0</div><div class="dl">Vidéos YouTube</div></div></div>
+          <div class="dc"><div class="di or"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><div class="dn" id="da">0</div><div class="dl">Articles</div></div></div>
+          <div class="dc"><div class="di rd"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="dn" id="ds">0</div><div class="dl">Soumissions</div></div></div>
+        </div>
+        <div class="tw">
+          <div class="th"><div><h3>Dernières soumissions</h3><p>Les demandes les plus récentes.</p></div><button class="btn bs2 bsm" onclick="go('subs')">Voir tout</button></div>
+          <table><thead><tr><th>Type</th><th>Nom</th><th>Email</th><th>Date</th><th></th></tr></thead><tbody id="dtbl"><tr class="er"><td colspan="5">Aucune soumission.</td></tr></tbody></table>
+        </div>
+      </div>
+
+      <!-- TESTIMONIALS -->
+      <div class="pnl" id="pnl-testi">
+        <div class="tw">
+          <div class="th"><div><h3>Témoignages</h3><p>Affichés sur la page d'accueil.</p></div><button class="btn bp2" onclick="openM('testi')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Ajouter</button></div>
+          <table><thead><tr><th>Auteur</th><th>Note</th><th>Témoignage</th><th>Actions</th></tr></thead><tbody id="ttbl"></tbody></table>
+        </div>
+      </div>
+
+      <!-- VIDEOS -->
+      <div class="pnl" id="pnl-videos">
+        <div class="tw">
+          <div class="th"><div><h3>Vidéos YouTube</h3><p>S'affichent automatiquement sur le site.</p></div><button class="btn bp2" onclick="openM('video')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Ajouter</button></div>
+          <table><thead><tr><th>Titre</th><th>ID YouTube</th><th>Aperçu</th><th>Date</th><th>Actions</th></tr></thead><tbody id="vtbl"></tbody></table>
+        </div>
+      </div>
+
+      <!-- ARTICLES -->
+      <div class="pnl" id="pnl-articles">
+        <div class="tw">
+          <div class="th"><div><h3>Articles de blog</h3><p>Publiés sur le blog et la page d'accueil.</p></div><button class="btn bp2" onclick="openM('article')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Ajouter</button></div>
+          <table><thead><tr><th>Titre</th><th>Catégorie</th><th>Extrait</th><th>Date</th><th>Actions</th></tr></thead><tbody id="atbl"></tbody></table>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="pnl" id="pnl-stats">
+        <div style="background:#fff;border-radius:var(--rad);border:1px solid var(--b);padding:24px;margin-bottom:22px;box-shadow:var(--sh)">
+          <h3 style="font-size:15px;font-weight:700;margin-bottom:5px">Statistiques du site</h3>
+          <p style="font-size:12.5px;color:var(--tl)">Ces chiffres s'affichent dans la section "Chiffres clés" de la page d'accueil.</p>
+        </div>
+        <div class="se">
+          <div class="sec"><label>🎙 Épisodes publiés</label><input type="number" id="se1" min="0" /><div class="sh">Affiché avec "+"</div></div>
+          <div class="sec"><label>🎧 Plateformes d'écoute</label><input type="number" id="se2" min="0" /><div class="sh">Nombre de plateformes</div></div>
+          <div class="sec"><label>👥 Auditeurs touchés</label><input type="number" id="se3" min="0" /><div class="sh">Affiché avec "+"</div></div>
+          <div class="sec"><label>✅ Gratuit & accessible</label><input type="number" id="se4" min="0" max="100" /><div class="sh">Affiché avec "%"</div></div>
+        </div>
+        <div style="margin-top:20px"><button class="btn bp2" onclick="saveStats()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Enregistrer</button></div>
+      </div>
+
+      <!-- SUBMISSIONS -->
+      <div class="pnl" id="pnl-subs">
+        <div class="sff" id="sfilt">
+          <button class="sf act" data-f="all">Tous</button>
+          <button class="sf" data-f="contact">Contact</button>
+          <button class="sf" data-f="rdv">Rendez-vous</button>
+          <button class="sf" data-f="service">Service</button>
+        </div>
+        <div class="sc" id="scards"><div style="text-align:center;padding:50px;color:var(--tl);background:#fff;border-radius:var(--rad);border:1px solid var(--b)">Aucune soumission pour l'instant.</div></div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- MODAL TESTIMONIAL -->
+<div class="mo" id="mo-testi">
+  <div class="mbox">
+    <div class="mh"><h3 id="mth">Ajouter un témoignage</h3><button class="mc" onclick="closeM('testi')">✕</button></div>
+    <div class="mb">
+      <input type="hidden" id="tid" />
+      <div class="frow">
+        <div class="fg"><label>Prénom / Nom *</label><input type="text" id="tname" placeholder="ex: Fatou" /></div>
+        <div class="fg"><label>Rôle / Titre</label><input type="text" id="trole" placeholder="ex: Auditrice fidèle" /></div>
+      </div>
+      <div class="fg"><label>Note *</label><div class="ss" id="starsel"><button data-n="1">★</button><button data-n="2">★</button><button data-n="3">★</button><button data-n="4">★</button><button data-n="5">★</button></div></div>
+      <div class="fg"><label>Témoignage *</label><textarea id="ttext" placeholder="Écrivez le témoignage ici…"></textarea></div>
+      <div class="fa"><button class="btn bs2" onclick="closeM('testi')">Annuler</button><button class="btn bp2" onclick="saveTesti()">Enregistrer</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL VIDEO -->
+<div class="mo" id="mo-video">
+  <div class="mbox">
+    <div class="mh"><h3>Ajouter une vidéo YouTube</h3><button class="mc" onclick="closeM('video')">✕</button></div>
+    <div class="mb">
+      <div class="fg"><label>Titre *</label><input type="text" id="vtitle" placeholder="ex: Épisode 42 — Gérer son anxiété" /></div>
+      <div class="fg"><label>Lien YouTube *</label><input type="url" id="vurl" placeholder="https://www.youtube.com/watch?v=..." oninput="ytPrev()" /><div class="hint">Accepte youtube.com/watch?v=... et youtu.be/...</div></div>
+      <div class="fg"><label>Description (optionnel)</label><textarea id="vdesc" style="min-height:66px" placeholder="Courte description…"></textarea></div>
+      <div class="ytp" id="ytprev"><iframe id="ytframe" src="" allowfullscreen></iframe></div>
+      <div class="fa"><button class="btn bs2" onclick="closeM('video')">Annuler</button><button class="btn bp2" onclick="saveVideo()">Enregistrer</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL ARTICLE -->
+<div class="mo" id="mo-article">
+  <div class="mbox wide">
+    <div class="mh"><h3 id="mah">Ajouter un article</h3><button class="mc" onclick="closeM('article')">✕</button></div>
+    <div class="mb">
+      <input type="hidden" id="aid" />
+      <div class="fg"><label>Titre *</label><input type="text" id="atitle" placeholder="Titre de l'article" /></div>
+      <div class="frow">
+        <div class="fg"><label>Catégorie *</label><select id="acat"><option>Émotions</option><option>Anxiété</option><option>Corps &amp; Tabous</option><option>Bien-être</option><option>Relations</option><option>Identité</option><option>Éducation</option></select></div>
+        <div class="fg"><label>Temps de lecture</label><input type="text" id="artime" placeholder="ex: 5 min de lecture" /></div>
+      </div>
+      <div class="fg"><label>Extrait *</label><textarea id="aexcerpt" placeholder="Résumé court affiché dans les cartes…"></textarea></div>
+      <div class="fg"><label>Contenu complet</label><textarea id="acontent" style="min-height:120px" placeholder="Contenu de l'article…"></textarea></div>
+      <div class="fg"><label>Image (URL, optionnel)</label><input type="url" id="aimage" placeholder="https://... (laissez vide pour une image automatique)" /></div>
+      <div class="fa"><button class="btn bs2" onclick="closeM('article')">Annuler</button><button class="btn bp2" onclick="saveArticle()">Enregistrer</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SUBMISSION DETAIL -->
+<div class="mo" id="mo-sub">
+  <div class="mbox">
+    <div class="mh"><h3 id="msubh">Détail</h3><button class="mc" onclick="closeM('sub')">✕</button></div>
+    <div class="mb" id="msubb"></div>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE -->
+<div class="co" id="co">
+  <div class="cbox">
+    <div class="ci"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></div>
+    <h3>Confirmer la suppression</h3>
+    <p>Cette action est irréversible. Voulez-vous vraiment supprimer cet élément ?</p>
+    <div class="ca"><button class="btn bs2" onclick="closeCo()">Annuler</button><button class="btn bdn" id="cobtn">Supprimer</button></div>
+  </div>
+</div>
+
+<div id="tst"></div>
+
+<script>
+const K={t:'awdi_testimonials',v:'awdi_videos',a:'awdi_articles',s:'awdi_stats',sb:'awdi_submissions',ss:'awdi_admin_session',pw:'awdi_admin_pass'};
+const DEFPASS='awdi2025';
+const TITLES={dashboard:'Tableau de bord',testi:'Témoignages',videos:'Vidéos YouTube',articles:'Articles de blog',stats:'Statistiques du site',subs:'Soumissions de formulaires'};
+
+function gd(k){try{return JSON.parse(localStorage.getItem(K[k]))||[]}catch{return[]}}
+function go2(k,d){try{return JSON.parse(localStorage.getItem(K[k]))||d}catch{return d}}
+function sd(k,v){localStorage.setItem(K[k],JSON.stringify(v))}
+
+// AUTH
+function getPass(){return localStorage.getItem(K.pw)||DEFPASS}
+document.getElementById('lbtn').onclick=doLogin;
+document.getElementById('pwd').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+function doLogin(){
+  if(document.getElementById('pwd').value===getPass()){
+    localStorage.setItem(K.ss,'ok');
+    document.getElementById('login').style.display='none';
+    document.getElementById('app').classList.add('on');
+    init();
+  }else{document.getElementById('lerr').style.display='block';document.getElementById('pwd').style.borderColor='#EF4444'}
+}
+document.getElementById('logoutbtn').onclick=()=>{localStorage.removeItem(K.ss);location.reload()};
+if(localStorage.getItem(K.ss)==='ok'){document.getElementById('login').style.display='none';document.getElementById('app').classList.add('on');init()}
+
+function init(){renderDash();renderTesti();renderVids();renderArts();loadStats();renderSubs();updBadge()}
+
+// NAV
+document.querySelectorAll('.ni[data-s]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.s)));
+function go(name){
+  document.querySelectorAll('.ni[data-s]').forEach(b=>b.classList.toggle('act',b.dataset.s===name));
+  document.querySelectorAll('.pnl').forEach(p=>p.classList.toggle('act',p.id==='pnl-'+name));
+  document.getElementById('ttitle').textContent=TITLES[name]||name;
+}
+
+// DASH
+function renderDash(){
+  const t=gd('t'),v=gd('v'),a=gd('a'),s=gd('sb');
+  document.getElementById('dt').textContent=t.length;
+  document.getElementById('dv').textContent=v.length;
+  document.getElementById('da').textContent=a.length;
+  document.getElementById('ds').textContent=s.length;
+  const rec=[...s].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,5);
+  const tb=document.getElementById('dtbl');
+  tb.innerHTML=!rec.length?'<tr class="er"><td colspan="5">Aucune soumission.</td></tr>':
+    rec.map(x=>`<tr><td>${tbdg(x.type)}</td><td>${e(x.data?.prenom?(x.data.prenom+' '+(x.data.nom||'')):x.data?.nom||'—')}</td><td style="color:var(--tl);font-size:12px">${e(x.data?.email||'—')}</td><td style="color:var(--tl);font-size:12px">${fd(x.date)}</td><td><button class="btn bs2 bsm bic" onclick="openSub('${x.id}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td></tr>`).join('');
+}
+
+// TESTIMONIALS
+let cstars=5,editT=null;
+document.getElementById('starsel').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-n]');if(!b)return;
+  cstars=+b.dataset.n;updStars();
+});
+function updStars(){document.querySelectorAll('#starsel button').forEach(b=>b.classList.toggle('on',+b.dataset.n<=cstars))}
+
+function renderTesti(){
+  const list=gd('t');
+  document.getElementById('ttbl').innerHTML=!list.length?
+    '<tr class="er"><td colspan="4">Aucun témoignage. Cliquez sur "Ajouter".</td></tr>':
+    list.map(t=>`<tr>
+      <td><div style="display:flex;align-items:center;gap:9px"><div class="av">${e(t.name[0])}</div><div><div style="font-weight:600;font-size:13.5px">${e(t.name)}</div><div style="font-size:11px;color:var(--tl)">${e(t.role||'')}</div></div></div></td>
+      <td style="color:#F59E0B;letter-spacing:1px">${'★'.repeat(t.stars)}<span style="color:#E5E7EB">${'★'.repeat(5-t.stars)}</span></td>
+      <td><span class="tr" style="color:var(--tm);font-size:12.5px">"${e(t.text)}"</span></td>
+      <td><div style="display:flex;gap:5px">
+        <button class="btn bs2 bsm bic" onclick="editTesti('${t.id}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+        <button class="btn bdn bsm bic" onclick="delCo('t','${t.id}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>
+      </div></td>
+    </tr>`).join('');
+}
+
+function openM(type){
+  if(type==='testi'){
+    editT=null;document.getElementById('tid').value='';document.getElementById('tname').value='';
+    document.getElementById('trole').value='';document.getElementById('ttext').value='';
+    document.getElementById('mth').textContent='Ajouter un témoignage';cstars=5;updStars();
+  }else if(type==='article'){
+    editA=null;document.getElementById('aid').value='';document.getElementById('atitle').value='';
+    document.getElementById('acat').value='Émotions';document.getElementById('artime').value='';
+    document.getElementById('aexcerpt').value='';document.getElementById('acontent').value='';
+    document.getElementById('aimage').value='';document.getElementById('mah').textContent='Ajouter un article';
+  }else if(type==='video'){
+    document.getElementById('vtitle').value='';document.getElementById('vurl').value='';
+    document.getElementById('vdesc').value='';document.getElementById('ytprev').style.display='none';
+    document.getElementById('ytframe').src='';
+  }
+  document.getElementById('mo-'+type).classList.add('op');
+}
+function closeM(type){document.getElementById('mo-'+type).classList.remove('op')}
+document.querySelectorAll('.mo').forEach(m=>m.addEventListener('click',ev=>{if(ev.target===m)m.classList.remove('op')}));
+
+function editTesti(id){
+  const t=gd('t').find(x=>x.id===id);if(!t)return;
+  editT=id;document.getElementById('tid').value=id;document.getElementById('tname').value=t.name;
+  document.getElementById('trole').value=t.role||'';document.getElementById('ttext').value=t.text;
+  document.getElementById('mth').textContent='Modifier le témoignage';cstars=t.stars;updStars();
+  document.getElementById('mo-testi').classList.add('op');
+}
+
+function saveTesti(){
+  const name=document.getElementById('tname').value.trim();
+  const text=document.getElementById('ttext').value.trim();
+  if(!name||!text){toast('Nom et témoignage obligatoires.','er2');return}
+  const list=gd('t');
+  const id=editT||Date.now().toString();
+  const item={id,name,role:document.getElementById('trole').value.trim(),text,stars:cstars,date:new Date().toISOString()};
+  if(editT){const i=list.findIndex(x=>x.id===editT);if(i!==-1)list[i]=item}else list.unshift(item);
+  sd('t',list);closeM('testi');renderTesti();renderDash();toast(editT?'Témoignage modifié !':'Témoignage ajouté !');
+}
+
+// VIDEOS
+function ytId(url){const m=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?.*v=|embed\/|v\/))([a-zA-Z0-9_-]{11})/);return m?m[1]:null}
+function ytPrev(){
+  const id=ytId(document.getElementById('vurl').value);
+  const p=document.getElementById('ytprev'),f=document.getElementById('ytframe');
+  if(id){f.src=`https://www.youtube.com/embed/${id}?rel=0`;p.style.display='block'}
+  else{p.style.display='none';f.src=''}
+}
+function renderVids(){
+  const list=gd('v');
+  document.getElementById('vtbl').innerHTML=!list.length?
+    '<tr class="er"><td colspan="5">Aucune vidéo ajoutée.</td></tr>':
+    list.map(v=>`<tr>
+      <td><div style="font-weight:600;font-size:13.5px">${e(v.title)}</div><div style="font-size:11px;color:var(--tl)">${e(v.desc||'')}</div></td>
+      <td><code style="font-size:11.5px;background:var(--bg);padding:3px 7px;border-radius:5px">${v.ytId}</code></td>
+      <td><a href="https://youtube.com/watch?v=${v.ytId}" target="_blank" style="color:var(--g);font-size:12px;font-weight:600;text-decoration:none">▶ Voir</a></td>
+      <td style="font-size:11.5px;color:var(--tl)">${fd(v.date)}</td>
+      <td><button class="btn bdn bsm bic" onclick="delCo('v','${v.id}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button></td>
+    </tr>`).join('');
+}
+function saveVideo(){
+  const title=document.getElementById('vtitle').value.trim();
+  const url=document.getElementById('vurl').value.trim();
+  if(!title||!url){toast('Titre et lien obligatoires.','er2');return}
+  const id=ytId(url);if(!id){toast('Lien YouTube invalide.','er2');return}
+  const list=gd('v');
+  list.unshift({id:Date.now().toString(),title,url,ytId:id,desc:document.getElementById('vdesc').value.trim(),date:new Date().toISOString()});
+  sd('v',list);closeM('video');renderVids();renderDash();toast('Vidéo ajoutée !');
+}
+
+// ARTICLES
+let editA=null;
+function renderArts(){
+  const list=gd('a');
+  document.getElementById('atbl').innerHTML=!list.length?
+    '<tr class="er"><td colspan="5">Aucun article publié.</td></tr>':
+    list.map(a=>`<tr>
+      <td><div style="font-weight:600;font-size:13.5px;max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${e(a.title)}</div></td>
+      <td>${catbdg(a.category)}</td>
+      <td><span class="tr" style="color:var(--tm);font-size:12px">${e(a.excerpt)}</span></td>
+      <td style="font-size:11.5px;color:var(--tl)">${fd(a.date)}</td>
+      <td><div style="display:flex;gap:5px">
+        <button class="btn bs2 bsm bic" onclick="editArt('${a.id}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+        <button class="btn bdn bsm bic" onclick="delCo('a','${a.id}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>
+      </div></td>
+    </tr>`).join('');
+}
+function editArt(id){
+  const a=gd('a').find(x=>x.id===id);if(!a)return;
+  editA=id;document.getElementById('aid').value=id;document.getElementById('atitle').value=a.title;
+  document.getElementById('acat').value=a.category;document.getElementById('artime').value=a.readTime||'';
+  document.getElementById('aexcerpt').value=a.excerpt;document.getElementById('acontent').value=a.content||'';
+  document.getElementById('aimage').value=a.image||'';document.getElementById('mah').textContent='Modifier l\'article';
+  document.getElementById('mo-article').classList.add('op');
+}
+function saveArticle(){
+  const title=document.getElementById('atitle').value.trim();
+  const excerpt=document.getElementById('aexcerpt').value.trim();
+  if(!title||!excerpt){toast('Titre et extrait obligatoires.','er2');return}
+  const list=gd('a');
+  const id=editA||Date.now().toString();
+  const orig=editA?list.find(x=>x.id===editA):null;
+  const item={id,title,category:document.getElementById('acat').value,readTime:document.getElementById('artime').value.trim()||'5 min de lecture',excerpt,content:document.getElementById('acontent').value.trim(),image:document.getElementById('aimage').value.trim(),date:orig?orig.date:new Date().toISOString()};
+  if(editA){const i=list.findIndex(x=>x.id===editA);if(i!==-1)list[i]=item}else list.unshift(item);
+  sd('a',list);closeM('article');renderArts();renderDash();toast(editA?'Article modifié !':'Article publié !');
+}
+
+// STATS
+function loadStats(){
+  const s=go2('s',{episodes:50,platforms:5,listeners:10000,free:100});
+  document.getElementById('se1').value=s.episodes??50;
+  document.getElementById('se2').value=s.platforms??5;
+  document.getElementById('se3').value=s.listeners??10000;
+  document.getElementById('se4').value=s.free??100;
+}
+function saveStats(){
+  sd('s',{episodes:+document.getElementById('se1').value,platforms:+document.getElementById('se2').value,listeners:+document.getElementById('se3').value,free:+document.getElementById('se4').value});
+  toast('Statistiques mises à jour !');
+}
+
+// SUBMISSIONS
+let sfilt='all';
+document.querySelectorAll('.sf').forEach(b=>b.addEventListener('click',()=>{sfilt=b.dataset.f;document.querySelectorAll('.sf').forEach(x=>x.classList.toggle('act',x===b));renderSubs()}));
+function renderSubs(){
+  const all=gd('sb').sort((a,b)=>new Date(b.date)-new Date(a.date));
+  const list=sfilt==='all'?all:all.filter(x=>x.type===sfilt);
+  const c=document.getElementById('scards');
+  if(!list.length){c.innerHTML='<div style="text-align:center;padding:50px;color:var(--tl);background:#fff;border-radius:var(--rad);border:1px solid var(--b)">Aucune soumission'+(sfilt!=='all'?' dans cette catégorie':'')+'.</div>';return}
+  c.innerHTML=list.map(x=>`<div class="scard" onclick="openSub('${x.id}')">
+    <div class="sch">
+      <div class="av" style="width:32px;height:32px;font-size:12px">${(x.data?.prenom||x.data?.nom||'?')[0].toUpperCase()}</div>
+      <div><div class="sct">${e(x.data?.prenom?(x.data.prenom+' '+(x.data.nom||'')):x.data?.nom||'Anonyme')}</div><div style="font-size:11px;color:var(--tl)">${e(x.data?.email||'')}</div></div>
+      ${tbdg(x.type)}<span class="scd">${fd(x.date)}</span>
+    </div>
+    <div class="scb">${e((x.data?.message||x.data?.sujet||x.data?.service||'—').slice(0,150))}</div>
+  </div>`).join('');
+}
+function openSub(id){
+  const sub=gd('sb').find(x=>x.id===id);if(!sub)return;
+  document.getElementById('msubh').innerHTML=tbdg(sub.type)+' <span style="margin-left:6px;font-size:13px;font-weight:400;color:var(--tl)">'+fd(sub.date)+'</span>';
+  const fields=Object.entries(sub.data||{}).map(([k,v])=>`<div class="sdf"><span class="sdk">${e(k)}</span><span class="sdv">${e(String(v))}</span></div>`).join('');
+  document.getElementById('msubb').innerHTML=`<div class="sub-det">${fields||'<p style="color:var(--tl)">Aucune donnée.</p>'}</div><div class="fa"><button class="btn bdn" onclick="delCo('sb','${id}');closeM('sub')">Supprimer</button></div>`;
+  document.getElementById('mo-sub').classList.add('op');
+}
+function updBadge(){const n=gd('sb').length;const b=document.getElementById('sbdg');b.textContent=n;b.style.display=n?'inline-block':'none'}
+
+// DELETE
+let delCb=null;
+function delCo(type,id){
+  delCb=()=>{
+    const list=gd(type);sd(type,list.filter(x=>x.id!==id));closeCo();
+    if(type==='t')renderTesti();if(type==='v')renderVids();if(type==='a')renderArts();if(type==='sb'){renderSubs();updBadge()}
+    renderDash();toast('Supprimé.');
+  };
+  document.getElementById('co').classList.add('op');
+}
+document.getElementById('cobtn').onclick=()=>delCb&&delCb();
+function closeCo(){document.getElementById('co').classList.remove('op')}
+
+// TOAST
+let tst2;
+function toast(msg,type='ok'){
+  const t=document.getElementById('tst');t.className=type;t.textContent=msg;t.classList.add('on');
+  clearTimeout(tst2);tst2=setTimeout(()=>t.classList.remove('on'),3000);
+}
+
+// HELPERS
+function e(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function fd(d){return new Date(d).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'})}
+function tbdg(t){const m={contact:'bb',rdv:'bg',service:'bp',paiement:'bo'};const l={contact:'Contact',rdv:'Rendez-vous',service:'Service',paiement:'Paiement'};return`<span class="bdg ${m[t]||'bx'}">${l[t]||t}</span>`}
+function catbdg(c){const m={'Émotions':'bp','Anxiété':'bo','Corps & Tabous':'br','Bien-être':'bg','Relations':'bb','Identité':'bp','Éducation':'bb'};return`<span class="bdg ${m[c]||'bx'}">${e(c)}</span>`}
+</script>
+</body>
+</html>
