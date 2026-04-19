@@ -1691,9 +1691,12 @@ section {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .stat-grid {
+  .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+  }
+  .stat-number {
+    font-size: 36px;
   }
 
   /* ── Service card ── */
@@ -1757,14 +1760,48 @@ section {
   .footer-inner {
     padding: 44px 20px 0;
   }
+  .footer-brand-col {
+    align-items: center;
+    text-align: center;
+  }
+  .footer-desc {
+    max-width: 100%;
+    text-align: center;
+  }
+  .footer-identity {
+    align-self: center;
+    border-left: none;
+    border-radius: 8px;
+    border: 1px solid rgba(46,155,91,0.2);
+    text-align: center;
+  }
+  .footer-badges {
+    justify-content: center;
+  }
+  .footer-socials {
+    justify-content: center;
+  }
+  .footer-nav-col {
+    text-align: center;
+  }
+  .footer-nav-col h5 {
+    display: block;
+    text-align: center;
+  }
+  .footer-nav-col ul li a {
+    justify-content: center;
+  }
   .footer-bottom-bar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
+    text-align: center;
   }
   .footer-legal-links {
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
   }
   .footer-brand-col .footer-logo-link img {
     height: 60px !important;

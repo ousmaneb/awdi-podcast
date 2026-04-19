@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=8" />
-  <link rel="stylesheet" href="css/enhancements.css?v=8" />
+  <link rel="stylesheet" href="css/style.css?v=10" />
+  <link rel="stylesheet" href="css/enhancements.css?v=10" />
   <style>
     .video-main-feature {
       background: var(--text-dark);
@@ -233,7 +233,7 @@
             Liste des épisodes
           </div>
           <div class="playlist-items">
-            <div class="video-playlist-item active">
+            <div class="video-playlist-item active" data-video-id="OyLgZpoeJFM" data-title="Pourquoi est-il difficile de parler de ses émotions ?">
               <div class="video-thumb" style="overflow:hidden;padding:0;">
                 <img src="https://img.youtube.com/vi/OyLgZpoeJFM/mqdefault.jpg" alt="Épisode 1" style="width:100%;height:100%;object-fit:cover;" />
               </div>
@@ -242,7 +242,7 @@
                 <p>Awdi Podcast · Santé mentale</p>
               </div>
             </div>
-            <div class="video-playlist-item">
+            <div class="video-playlist-item" data-video-id="HKIVZUo4OIk" data-title="L'anxiété : comprendre pour mieux vivre">
               <div class="video-thumb" style="overflow:hidden;padding:0;">
                 <img src="https://img.youtube.com/vi/HKIVZUo4OIk/mqdefault.jpg" alt="Épisode 2" style="width:100%;height:100%;object-fit:cover;" />
               </div>
@@ -251,7 +251,7 @@
                 <p>Awdi Podcast · Anxiété</p>
               </div>
             </div>
-            <div class="video-playlist-item">
+            <div class="video-playlist-item" data-video-id="b5oaPn9d7VQ" data-title="Corps, règles et tabous : parlons-en">
               <div class="video-thumb" style="overflow:hidden;padding:0;">
                 <img src="https://img.youtube.com/vi/b5oaPn9d7VQ/mqdefault.jpg" alt="Épisode 3" style="width:100%;height:100%;object-fit:cover;" />
               </div>
@@ -260,7 +260,7 @@
                 <p>Awdi Podcast · Corps &amp; Identité</p>
               </div>
             </div>
-            <div class="video-playlist-item">
+            <div class="video-playlist-item" data-video-id="PWM1SpS78WE" data-title="L'éducation émotionnelle qu'on n'a pas reçue">
               <div class="video-thumb" style="overflow:hidden;padding:0;">
                 <img src="https://img.youtube.com/vi/PWM1SpS78WE/mqdefault.jpg" alt="Épisode 4" style="width:100%;height:100%;object-fit:cover;" />
               </div>
@@ -411,5 +411,19 @@
 
   <script src="js/cms.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    document.querySelectorAll('.video-playlist-item[data-video-id]').forEach(function(item) {
+      item.addEventListener('click', function() {
+        var videoId = this.dataset.videoId;
+        var title   = this.dataset.title;
+        var player  = document.getElementById('main-player');
+        player.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0" title="' + title + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        document.querySelector('.video-main-info h2').textContent = title;
+        document.querySelectorAll('.video-playlist-item').forEach(function(i) { i.classList.remove('active'); });
+        this.classList.add('active');
+        document.querySelector('.video-main-feature').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
 </body>
 </html>
