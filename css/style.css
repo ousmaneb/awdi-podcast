@@ -1581,124 +1581,211 @@ section {
   .footer-brand-col {
     grid-column: 1 / -1;
   }
-
   .hero-container {
-    gap: 48px;
+    gap: 40px;
+  }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
+  /* ── Global spacing ── */
   section {
-    padding: 60px 24px;
+    padding: 52px 20px;
+  }
+  .container {
+    padding-left: 0;
+    padding-right: 0;
   }
 
+  /* ── Navbar ── */
   .navbar {
-    padding: 0 24px;
+    padding: 0 20px;
   }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 72px;
-    left: 0;
-    right: 0;
-    background: var(--white);
-    flex-direction: column;
-    padding: 16px 24px;
-    border-bottom: 1px solid rgba(46, 155, 91, 0.1);
-    box-shadow: var(--shadow-md);
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
   .nav-mobile-btn {
     display: flex;
   }
 
-  .hero {
-    padding: 60px 24px;
+  /* ── Section headers ── */
+  .section-header {
+    margin-bottom: 36px;
+  }
+  .section-header h2 {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+  .section-header p {
+    font-size: 15px;
   }
 
+  /* ── Hero ── */
+  .hero {
+    padding: 48px 20px 40px;
+  }
   .hero-container {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 36px;
     text-align: center;
   }
-
-  .hero-buttons {
-    justify-content: center;
+  .hero-image {
+    order: -1;
   }
-
   .hero-image .logo-showcase {
-    width: 260px;
-    height: 260px;
+    width: 210px;
+    height: 210px;
     margin: 0 auto;
   }
-
+  .hero-buttons {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
   .floating-badge {
     display: none;
   }
 
+  /* ── Page hero (inner pages) ── */
+  .page-hero {
+    padding: 48px 20px 36px;
+  }
+  .page-hero h1 {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+  .page-hero p {
+    font-size: 15px;
+  }
+
+  /* ── Cards & grids ── */
+  .blog-grid,
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
   .about-content {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 32px;
   }
-
   .rdv-info {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 20px;
   }
-
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 32px;
+  }
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 
+  /* ── Service card ── */
+  .service-card {
+    padding: 24px 20px;
+  }
+
+  /* ── Guarantee strip ── */
+  .guarantee-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding: 24px 20px;
+  }
+
+  /* ── Platform links ── */
+  .platforms {
+    padding: 28px 20px;
+  }
+  .platform-links {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px;
+  }
+
+  /* ── CTA section ── */
+  .cta-section {
+    padding: 52px 20px;
+  }
+  .cta-section h2 {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+  .cta-section .btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  /* ── Article ── */
+  .article-content {
+    padding: 36px 20px;
+  }
+
+  /* ── Footer ── */
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 32px;
+  }
+  .footer-inner {
+    padding: 44px 20px 0;
   }
   .footer-bottom-bar {
     flex-direction: column;
     align-items: flex-start;
+    gap: 8px;
   }
   .footer-legal-links {
     flex-direction: column;
     gap: 8px;
   }
-  .footer-inner {
-    padding: 40px 24px 28px;
-  }
-
-  .article-content {
-    padding: 40px 24px;
-  }
-
-  .platforms {
-    padding: 32px 24px;
-  }
-
-  .page-hero {
-    padding: 60px 24px 40px;
+  .footer-brand-col .footer-logo-link img {
+    height: 60px !important;
   }
 }
 
 @media (max-width: 480px) {
+  /* ── Extra small phones ── */
+  section {
+    padding: 44px 16px;
+  }
+  .hero {
+    padding: 40px 16px 36px;
+  }
   .hero h1 {
-    font-size: 30px;
+    font-size: 26px;
   }
-
-  .blog-grid,
-  .video-grid,
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-
   .hero-image .logo-showcase {
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
+  }
+  .page-hero {
+    padding: 40px 16px 28px;
+  }
+  .page-hero h1 {
+    font-size: 22px;
+  }
+  .section-header h2 {
+    font-size: 21px;
+  }
+  .footer-inner {
+    padding: 36px 16px 0;
+  }
+  .guarantee-strip {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .btn {
+    min-height: 46px;
+  }
+  .nav-logo-img {
+    height: 36px !important;
   }
 }
 
