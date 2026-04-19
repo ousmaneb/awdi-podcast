@@ -100,32 +100,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ── HERO TYPING WORDS ── */
-  const typingEl = document.getElementById('hero-keyword');
-  if (typingEl) {
-    const words = ['santé mentale', 'nos émotions', 'bien-être', 'nos tabous', 'notre avenir'];
-    let wordIdx = 0, charIdx = words[0].length, deleting = false;
-    typingEl.classList.add('typing-cursor');
-    function typeStep() {
-      const current = words[wordIdx];
-      if (!deleting) {
-        charIdx++;
-        typingEl.textContent = current.slice(0, charIdx);
-        if (charIdx === current.length) { deleting = true; setTimeout(typeStep, 2400); return; }
-      } else {
-        charIdx--;
-        typingEl.textContent = current.slice(0, charIdx);
-        if (charIdx === 0) { deleting = false; wordIdx = (wordIdx + 1) % words.length; }
-      }
-      setTimeout(typeStep, deleting ? 55 : 105);
-    }
-    setTimeout(typeStep, 3000);
-  }
-
   /* ── REVEAL ANIMATIONS ── */
   ['.feature-card','.blog-card','.service-card','.stat-item',
    '.testimonial-card','.section-header','.platform-link',
-   '.video-card','.contact-info-item','.episode-card','.host-highlight'].forEach(sel => {
+   '.video-card','.contact-info-item'].forEach(sel => {
     document.querySelectorAll(sel).forEach((el, i) => {
       el.classList.add('reveal-hidden');
       el.dataset.delay = (i % 4) * 90;

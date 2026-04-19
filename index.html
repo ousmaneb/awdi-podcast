@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=11" />
-  <link rel="stylesheet" href="css/enhancements.css?v=11" />
+  <link rel="stylesheet" href="css/style.css?v=10" />
+  <link rel="stylesheet" href="css/enhancements.css?v=10" />
     <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png" />
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 </head>
@@ -37,19 +37,16 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-container">
       <div class="hero-content">
-        <div class="live-badge">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/></svg>
-          Nouveau podcast disponible
-        </div>
-        <div class="hero-waveform" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <div class="hero-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+          Santé mentale &amp; Prise de conscience
         </div>
         <div style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--text-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;">
           <span style="width:20px;height:1px;background:var(--green-primary);display:inline-block;"></span>
           Peulh · Fulani · Poulo
           <span style="width:20px;height:1px;background:var(--green-primary);display:inline-block;"></span>
         </div>
-        <h1 id="hero-title">Parlons de <span class="highlight" id="hero-keyword">santé mentale</span> avec cœur</h1>
+        <h1 id="hero-title">Parlons de <span class="highlight">santé mentale</span> avec cœur</h1>
         <p>Awdi Podcast est un espace bienveillant où l'on aborde les sujets qui touchent vraiment : les émotions, l'éducation, les tabous, le bien-être. Des échanges sincères pour mieux se comprendre.</p>
         <div class="hero-buttons">
           <a href="rendez-vous.html" class="btn btn-primary btn-lg">Prendre un rendez-vous</a>
@@ -98,80 +95,6 @@
       </a>
     </div>
   </div>
-
-  <!-- DERNIERS ÉPISODES -->
-  <section aria-labelledby="episodes-title">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">À l'écoute</span>
-        <h2 id="episodes-title">Derniers épisodes</h2>
-        <p>Chaque épisode est une invitation à mieux se comprendre. Écoutez, ressentez, avancez.</p>
-      </div>
-      <div class="episodes-grid">
-
-        <div class="episode-card">
-          <div class="episode-thumb">
-            <img src="https://img.youtube.com/vi/OyLgZpoeJFM/maxresdefault.jpg" alt="Épisode 50" loading="lazy" />
-            <a href="https://www.youtube.com/watch?v=OyLgZpoeJFM" target="_blank" rel="noopener" class="episode-play-btn" aria-label="Lire l'épisode">
-              <span><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--green-primary)"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
-            </a>
-            <span class="episode-num-badge">Épisode 50</span>
-          </div>
-          <div class="episode-body">
-            <span class="episode-tag">Santé mentale</span>
-            <h3>Pourquoi est-il difficile de parler de ses émotions ?</h3>
-            <p>Une conversation profonde sur les mécanismes qui nous empêchent d'exprimer ce que l'on ressent vraiment.</p>
-            <div class="episode-meta">
-              <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 42 min</span>
-              <a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" target="_blank" rel="noopener" class="episode-listen-link">Écouter →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="episode-card">
-          <div class="episode-thumb">
-            <img src="https://img.youtube.com/vi/HKIVZUo4OIk/maxresdefault.jpg" alt="Épisode 49" loading="lazy" />
-            <a href="https://www.youtube.com/watch?v=HKIVZUo4OIk" target="_blank" rel="noopener" class="episode-play-btn" aria-label="Lire l'épisode">
-              <span><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--green-primary)"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
-            </a>
-            <span class="episode-num-badge">Épisode 49</span>
-          </div>
-          <div class="episode-body">
-            <span class="episode-tag">Anxiété</span>
-            <h3>L'anxiété : comprendre pour mieux vivre</h3>
-            <p>Comment reconnaître l'anxiété, l'apprivoiser et trouver des outils pour avancer au quotidien.</p>
-            <div class="episode-meta">
-              <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 38 min</span>
-              <a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" target="_blank" rel="noopener" class="episode-listen-link">Écouter →</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="episode-card">
-          <div class="episode-thumb">
-            <img src="https://img.youtube.com/vi/b5oaPn9d7VQ/maxresdefault.jpg" alt="Épisode 48" loading="lazy" />
-            <a href="https://www.youtube.com/watch?v=b5oaPn9d7VQ" target="_blank" rel="noopener" class="episode-play-btn" aria-label="Lire l'épisode">
-              <span><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--green-primary)"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
-            </a>
-            <span class="episode-num-badge">Épisode 48</span>
-          </div>
-          <div class="episode-body">
-            <span class="episode-tag">Corps &amp; Identité</span>
-            <h3>Corps, règles et tabous : parlons-en</h3>
-            <p>Des sujets trop souvent passés sous silence, abordés avec douceur, respect et bienveillance.</p>
-            <div class="episode-meta">
-              <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 51 min</span>
-              <a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" target="_blank" rel="noopener" class="episode-listen-link">Écouter →</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="text-center mt-8">
-        <a href="videos.html" class="btn btn-secondary">Voir tous les épisodes</a>
-      </div>
-    </div>
-  </section>
 
   <!-- THÈMES ABORDÉS -->
   <section class="bg-light" aria-labelledby="themes-title">
@@ -247,46 +170,6 @@
         <div class="stat-item">
           <div class="stat-number" data-count="100" data-suffix="%">100%</div>
           <div class="stat-label">Gratuit &amp; accessible</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- HÔTE DU PODCAST -->
-  <section class="host-section bg-light" aria-labelledby="host-title">
-    <div class="container">
-      <div class="host-grid">
-        <div class="host-image-wrap host-photo-frame">
-          <!-- Remplacez cette image par une vraie photo de l'hôte -->
-          <img src="https://picsum.photos/seed/diariou-barry/600/750" alt="Diariou Barry — Awdi Podcast" class="host-photo" loading="lazy" />
-          <div class="host-quote-bubble">
-            <p>"La santé mentale mérite qu'on lui donne la parole, sans honte et sans tabou."</p>
-          </div>
-        </div>
-        <div class="host-content">
-          <span class="section-label">La voix derrière le micro</span>
-          <h2 id="host-title">Diariou Barry</h2>
-          <p class="host-bio">Passionnée par la santé mentale et le mieux-être, Diariou Barry a créé Awdi Podcast pour briser les tabous et ouvrir des espaces de dialogue sincères et bienveillants. Chaque épisode est une conversation du cœur, pensée pour vous aider à mieux vous comprendre.</p>
-          <div class="host-highlights">
-            <div class="host-highlight">
-              <strong>50+</strong>
-              <span>Épisodes publiés</span>
-            </div>
-            <div class="host-highlight">
-              <strong>10 000+</strong>
-              <span>Auditeurs touchés</span>
-            </div>
-            <div class="host-highlight">
-              <strong>5</strong>
-              <span>Plateformes</span>
-            </div>
-          </div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
-            <a href="a-propos.html" class="btn btn-primary">Découvrir son parcours</a>
-            <a href="rendez-vous.html" class="btn btn-secondary">Prendre rendez-vous</a>
-          </div>
         </div>
       </div>
     </div>
@@ -431,7 +314,7 @@
           </div>
           <p class="testimonial-text">"Ce podcast m'a aidée à mettre des mots sur ce que je ressentais depuis des années. Je ne me sens plus seule dans ma lutte quotidienne."</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar-img"><img src="https://picsum.photos/seed/avatar-fatou/100/100" alt="Fatou" loading="lazy" /></div>
+            <div class="testimonial-avatar">F</div>
             <div>
               <div class="testimonial-name">Fatou</div>
               <div class="testimonial-role">Auditrice fidèle</div>
@@ -448,7 +331,7 @@
           </div>
           <p class="testimonial-text">"Enfin un podcast qui parle de santé mentale avec des mots simples et sans jugement. J'en parle à toute ma famille !"</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar-img"><img src="https://picsum.photos/seed/avatar-karim/100/100" alt="Karim" loading="lazy" /></div>
+            <div class="testimonial-avatar">K</div>
             <div>
               <div class="testimonial-name">Karim</div>
               <div class="testimonial-role">Auditeur depuis le début</div>
@@ -465,7 +348,7 @@
           </div>
           <p class="testimonial-text">"La bienveillance du ton, la profondeur des sujets… Awdi Podcast est devenu une bouffée d'air frais dans mon quotidien."</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar-img"><img src="https://picsum.photos/seed/avatar-amina/100/100" alt="Amina" loading="lazy" /></div>
+            <div class="testimonial-avatar">A</div>
             <div>
               <div class="testimonial-name">Amina</div>
               <div class="testimonial-role">Professionnelle de santé</div>
