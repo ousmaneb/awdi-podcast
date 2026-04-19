@@ -1637,7 +1637,7 @@ section {
     text-align: center;
   }
   .hero-image {
-    order: -1;
+    order: 1;
   }
   .hero-image .logo-showcase {
     width: 210px;
