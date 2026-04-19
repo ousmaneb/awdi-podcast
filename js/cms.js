@@ -1,4 +1,6 @@
 // ===== AWDI CMS — reads admin data and injects into site pages =====
+// localStorage keys: awdi_testimonials, awdi_videos, awdi_articles,
+//                    awdi_stats, awdi_submissions, awdi_newsletter
 
 const AWDI = {
   get: function(key) {
@@ -25,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
   cmsVideos();
   cmsArticles();
   cmsForms();
+  cmsNewsletter();
+  cmsCalendly();
 });
 
 /* ── STATS ── */
@@ -124,28 +128,92 @@ function cmsForms() {
   if (cf) {
     cf.addEventListener('submit', function(e) {
       e.preventDefault();
-      const subject = (document.querySelector('.subject-btn.selected') || {}).dataset?.subject || '';
+      const selectedSubject = document.querySelector('.subject-btn.selected');
       AWDI.saveSub('contact', {
-        prenom:  (cf.querySelector('[name=prenom]') || {}).value || '',
-        nom:     (cf.querySelector('[name=nom]')    || {}).value || '',
-        email:   (cf.querySelector('[name=email]')  || {}).value || '',
-        sujet:   subject || (cf.querySelector('[name=sujet]') || {}).value || '',
-        message: (cf.querySelector('[name=message]')|| {}).value || ''
+        prenom:  (cf.querySelector('[name=prenom]')  || {}).value || '',
+        nom:     (cf.querySelector('[name=nom]')     || {}).value || '',
+        email:   (cf.querySelector('[name=email]')   || {}).value || '',
+        sujet:   (selectedSubject || {}).dataset?.subject || (cf.querySelector('[name=sujet]') || {}).value || '',
+        message: (cf.querySelector('[name=message]') || {}).value || ''
       });
-      // Show success feedback
-      cf.innerHTML = '<div style="text-align:center;padding:40px 20px">' +
-        '<div style="width:64px;height:64px;background:var(--green-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px">' +
-        '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>' +
-        '<h3 style="font-size:20px;font-weight:800;color:var(--text-dark);margin-bottom:10px">Message envoyé !</h3>' +
-        '<p style="color:var(--text-mid);line-height:1.7">Merci pour votre message. Je vous réponds personnellement dans les 48h.</p></div>';
+      cf.closest('.contact-form-card').innerHTML =
+        '<div style="text-align:center;padding:48px 20px">' +
+        '<div style="width:70px;height:70px;background:var(--green-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px">' +
+        '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>' +
+        '<h3 style="font-size:22px;font-weight:800;color:var(--text-dark);margin-bottom:12px">Message envoyé !</h3>' +
+        '<p style="color:var(--text-mid);line-height:1.8;max-width:380px;margin:0 auto">Merci pour votre message. Je vous réponds personnellement dans les 48h.</p></div>';
     });
   }
 
-  // Service request buttons (any button with data-service)
+  // Service request buttons (any element with data-service that is a button or link)
   document.querySelectorAll('[data-service]').forEach(function(btn) {
     if (btn.tagName === 'BUTTON' || btn.tagName === 'A') {
       btn.addEventListener('click', function() {
         AWDI.saveSub('service', { service: btn.dataset.service || btn.textContent.trim() });
+      });
+    }
+  });
+}
+
+/* ── NEWSLETTER ── */
+function cmsNewsletter() {
+  const footer = document.querySelector('footer');
+  if (!footer) return;
+
+  const bar = document.createElement('div');
+  bar.id = 'nl-bar';
+  bar.innerHTML =
+    '<div class="nl-inner">' +
+      '<div class="nl-text">' +
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' +
+        '<div>' +
+          '<strong>Restez informé·e</strong>' +
+          '<span>Nouveaux épisodes et articles directement dans votre boîte mail.</span>' +
+        '</div>' +
+      '</div>' +
+      '<form id="nl-form">' +
+        '<input type="email" id="nl-email" placeholder="votre@email.fr" required />' +
+        '<button type="submit">S\'abonner</button>' +
+      '</form>' +
+    '</div>';
+
+  footer.parentNode.insertBefore(bar, footer);
+
+  document.getElementById('nl-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('nl-email').value.trim();
+    if (!email) return;
+
+    // Check for duplicates
+    const existing = AWDI.get('newsletter');
+    if (existing.some(function(x) { return x.email === email; })) {
+      document.getElementById('nl-form').innerHTML =
+        '<span style="color:var(--green-primary);font-size:13px;font-weight:600">✓ Vous êtes déjà abonné·e !</span>';
+      return;
+    }
+
+    existing.unshift({ id: Date.now().toString(), email: email, date: new Date().toISOString() });
+    localStorage.setItem('awdi_newsletter', JSON.stringify(existing));
+
+    document.getElementById('nl-form').innerHTML =
+      '<span style="color:var(--green-primary);font-size:13px;font-weight:600">✓ Merci, vous êtes abonné·e !</span>';
+  });
+}
+
+/* ── CALENDLY RDV ── */
+function cmsCalendly() {
+  window.addEventListener('message', function(e) {
+    if (!e.data || typeof e.data.event !== 'string') return;
+    if (e.data.event === 'calendly.event_scheduled') {
+      var payload = e.data.payload || {};
+      var invitee = payload.invitee || {};
+      var evt = payload.event || {};
+      var sel = document.querySelector('.service-option.selected');
+      AWDI.saveSub('rdv', {
+        nom:     invitee.name  || '',
+        email:   invitee.email || '',
+        service: sel ? (sel.querySelector('h4') || {}).textContent || sel.dataset.service : '',
+        date_rdv: evt.start_time || ''
       });
     }
   });

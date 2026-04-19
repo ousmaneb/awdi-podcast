@@ -529,6 +529,49 @@ img.img-loaded  { opacity: 1; }
 .toast.error   { border-left-color: #ef4444 !important; }
 
 /* ══════════════════════════════════════════
+   NEWSLETTER BAR
+══════════════════════════════════════════ */
+#nl-bar {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-primary) 100%);
+  padding: 32px 40px;
+}
+.nl-inner {
+  max-width: 900px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+.nl-text {
+  display: flex; align-items: center; gap: 14px; color: white;
+}
+.nl-text svg { flex-shrink: 0; stroke: rgba(255,255,255,.9); }
+.nl-text strong { display: block; font-size: 16px; font-weight: 800; margin-bottom: 3px; }
+.nl-text span { font-size: 13px; opacity: .85; }
+#nl-form {
+  display: flex; gap: 10px; flex-shrink: 0;
+}
+#nl-email {
+  padding: 11px 18px; border: 2px solid rgba(255,255,255,.3);
+  border-radius: 50px; background: rgba(255,255,255,.15);
+  color: white; font-size: 14px; font-family: inherit; outline: none;
+  width: 240px; transition: border-color .2s;
+}
+#nl-email::placeholder { color: rgba(255,255,255,.6); }
+#nl-email:focus { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.2); }
+#nl-form button {
+  padding: 11px 22px; background: white; color: var(--green-dark);
+  border: none; border-radius: 50px; font-size: 14px; font-weight: 700;
+  cursor: pointer; font-family: inherit; transition: all .2s; white-space: nowrap;
+}
+#nl-form button:hover { background: var(--green-pale); transform: translateY(-1px); }
+[data-theme="dark"] #nl-bar { background: linear-gradient(135deg, #0d1520 0%, #1a2332 100%); border-top: 1px solid rgba(46,155,91,.2); }
+@media (max-width: 640px) {
+  #nl-bar { padding: 24px 20px; }
+  .nl-inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+  #nl-form { width: 100%; }
+  #nl-email { flex: 1; width: auto; }
+}
+
+/* ══════════════════════════════════════════
    FOOTER
 ══════════════════════════════════════════ */
 .footer-col ul li { overflow: hidden; }
