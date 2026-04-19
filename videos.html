@@ -417,11 +417,23 @@
         var videoId = this.dataset.videoId;
         var title   = this.dataset.title;
         var player  = document.getElementById('main-player');
-        player.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0" title="' + title + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-        document.querySelector('.video-main-info h2').textContent = title;
+
+        // Inline styles ensure iframe renders correctly even before CSS applies
+        player.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0" title="' + title + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>';
+
+        var titleEl = document.querySelector('.video-main-info h2');
+        if (titleEl) titleEl.textContent = title;
+
         document.querySelectorAll('.video-playlist-item').forEach(function(i) { i.classList.remove('active'); });
         this.classList.add('active');
-        document.querySelector('.video-main-feature').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Reliable scroll: calculate offset manually, account for fixed navbar
+        var feature = document.querySelector('.video-main-feature');
+        if (feature) {
+          var navH = (document.querySelector('.navbar') || { offsetHeight: 70 }).offsetHeight;
+          var top  = feature.getBoundingClientRect().top + window.pageYOffset - navH - 8;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
       });
     });
   </script>
