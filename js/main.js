@@ -58,19 +58,28 @@ document.addEventListener('DOMContentLoaded', function () {
   if (mobileBtn && navLinks) {
     const menuIcon  = `<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>`;
     const closeIcon = `<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    document.body.appendChild(overlay);
+
+    function closeMenu() {
+      navLinks.classList.remove('open');
+      mobileBtn.setAttribute('aria-expanded', 'false');
+      mobileBtn.innerHTML = menuIcon;
+      document.body.style.overflow = '';
+      overlay.classList.remove('show');
+    }
+
     mobileBtn.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
       mobileBtn.setAttribute('aria-expanded', open);
       mobileBtn.innerHTML = open ? closeIcon : menuIcon;
       document.body.style.overflow = open ? 'hidden' : '';
+      overlay.classList.toggle('show', open);
     });
-    document.addEventListener('click', e => {
-      if (navbar && !navbar.contains(e.target) && navLinks.classList.contains('open')) {
-        navLinks.classList.remove('open');
-        mobileBtn.innerHTML = menuIcon;
-        document.body.style.overflow = '';
-      }
-    });
+
+    overlay.addEventListener('click', closeMenu);
   }
 
   /* ── HERO MESH + ORBS ── */
