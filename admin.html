@@ -412,10 +412,10 @@
           <div class="pnl-hdr-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
         </div>
         <div class="se">
-          <div class="sec"><label>🎙 Épisodes publiés</label><input type="number" id="se1" min="0" /><div class="sh">Affiché avec "+"</div></div>
-          <div class="sec"><label>🎧 Plateformes d'écoute</label><input type="number" id="se2" min="0" /><div class="sh">Nombre de plateformes</div></div>
-          <div class="sec"><label>👥 Auditeurs touchés</label><input type="number" id="se3" min="0" /><div class="sh">Affiché avec "+"</div></div>
-          <div class="sec"><label>✅ Gratuit &amp; accessible</label><input type="number" id="se4" min="0" max="100" /><div class="sh">Affiché avec "%"</div></div>
+          <div class="sec"><label><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="22"/></svg>Épisodes publiés</label><input type="number" id="se1" min="0" /><div class="sh">Affiché avec "+"</div></div>
+          <div class="sec"><label><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>Plateformes d'écoute</label><input type="number" id="se2" min="0" /><div class="sh">Nombre de plateformes</div></div>
+          <div class="sec"><label><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Auditeurs touchés</label><input type="number" id="se3" min="0" /><div class="sh">Affiché avec "+"</div></div>
+          <div class="sec"><label><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px"><polyline points="20 6 9 17 4 12"/></svg>Gratuit &amp; accessible</label><input type="number" id="se4" min="0" max="100" /><div class="sh">Affiché avec "%"</div></div>
         </div>
         <div style="margin-top:22px"><button class="btn bp2" onclick="saveStats()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Enregistrer les changements</button></div>
       </div>
@@ -457,14 +457,14 @@
 <!-- MODAL TESTIMONIAL -->
 <div class="mo" id="mo-testi">
   <div class="mbox">
-    <div class="mh"><h3 id="mth">Ajouter un témoignage</h3><button class="mc" onclick="closeM('testi')">✕</button></div>
+    <div class="mh"><h3 id="mth">Ajouter un témoignage</h3><button class="mc" onclick="closeM('testi')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
     <div class="mb">
       <input type="hidden" id="tid" />
       <div class="frow">
         <div class="fg"><label>Prénom / Nom *</label><input type="text" id="tname" placeholder="ex: Fatou" /></div>
         <div class="fg"><label>Rôle / Titre</label><input type="text" id="trole" placeholder="ex: Auditrice fidèle" /></div>
       </div>
-      <div class="fg"><label>Note *</label><div class="ss" id="starsel"><button data-n="1">★</button><button data-n="2">★</button><button data-n="3">★</button><button data-n="4">★</button><button data-n="5">★</button></div></div>
+      <div class="fg"><label>Note *</label><div class="ss" id="starsel"><button data-n="1"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button><button data-n="2"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button><button data-n="3"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button><button data-n="4"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button><button data-n="5"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button></div></div>
       <div class="fg"><label>Témoignage *</label><textarea id="ttext" placeholder="Écrivez le témoignage ici…"></textarea></div>
       <div class="fa"><button class="btn bs2" onclick="closeM('testi')">Annuler</button><button class="btn bp2" onclick="saveTesti()">Enregistrer</button></div>
     </div>
@@ -474,7 +474,7 @@
 <!-- MODAL VIDEO -->
 <div class="mo" id="mo-video">
   <div class="mbox">
-    <div class="mh"><h3>Ajouter une vidéo YouTube</h3><button class="mc" onclick="closeM('video')">✕</button></div>
+    <div class="mh"><h3>Ajouter une vidéo YouTube</h3><button class="mc" onclick="closeM('video')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
     <div class="mb">
       <div class="fg"><label>Titre *</label><input type="text" id="vtitle" placeholder="ex: Épisode 42 — Gérer son anxiété" /></div>
       <div class="fg"><label>Lien YouTube *</label><input type="url" id="vurl" placeholder="https://www.youtube.com/watch?v=..." oninput="ytPrev()" /><div class="hint">Accepte youtube.com/watch?v=... et youtu.be/...</div></div>
@@ -488,7 +488,7 @@
 <!-- MODAL ARTICLE -->
 <div class="mo" id="mo-article">
   <div class="mbox wide">
-    <div class="mh"><h3 id="mah">Ajouter un article</h3><button class="mc" onclick="closeM('article')">✕</button></div>
+    <div class="mh"><h3 id="mah">Ajouter un article</h3><button class="mc" onclick="closeM('article')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
     <div class="mb">
       <input type="hidden" id="aid" />
       <div class="fg"><label>Titre *</label><input type="text" id="atitle" placeholder="Titre de l'article" /></div>
@@ -507,7 +507,7 @@
 <!-- MODAL SUBMISSION DETAIL -->
 <div class="mo" id="mo-sub">
   <div class="mbox">
-    <div class="mh"><h3 id="msubh">Détail</h3><button class="mc" onclick="closeM('sub')">✕</button></div>
+    <div class="mh"><h3 id="msubh">Détail</h3><button class="mc" onclick="closeM('sub')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
     <div class="mb" id="msubb"></div>
   </div>
 </div>
@@ -612,7 +612,7 @@ function renderTesti(){
     '<tr class="er"><td colspan="4">Aucun témoignage. Cliquez sur "Ajouter".</td></tr>':
     list.map(t=>`<tr>
       <td><div style="display:flex;align-items:center;gap:9px"><div class="av">${e(t.name[0])}</div><div><div style="font-weight:600;font-size:13.5px">${e(t.name)}</div><div style="font-size:11px;color:var(--tl)">${e(t.role||'')}</div></div></div></td>
-      <td style="color:#F59E0B;letter-spacing:1px">${'★'.repeat(t.stars)}<span style="color:#E5E7EB">${'★'.repeat(5-t.stars)}</span></td>
+      <td style="color:#F59E0B;display:flex;gap:2px;align-items:center">${Array.from({length:t.stars},()=>'<svg width="13" height="13" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>').join('')}${Array.from({length:5-t.stars},()=>'<svg width="13" height="13" viewBox="0 0 24 24" fill="#E5E7EB"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>').join('')}</td>
       <td><span class="tr" style="color:var(--tm);font-size:12.5px">"${e(t.text)}"</span></td>
       <td><div style="display:flex;gap:5px">
         <button class="btn bs2 bsm bic" onclick="editTesti('${t.id}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
@@ -675,7 +675,7 @@ function renderVids(){
     list.map(v=>`<tr>
       <td><div style="font-weight:600;font-size:13.5px">${e(v.title)}</div><div style="font-size:11px;color:var(--tl)">${e(v.desc||'')}</div></td>
       <td><code style="font-size:11.5px;background:var(--bg);padding:3px 7px;border-radius:5px">${v.ytId}</code></td>
-      <td><a href="https://youtube.com/watch?v=${v.ytId}" target="_blank" style="color:var(--g);font-size:12px;font-weight:600;text-decoration:none">▶ Voir</a></td>
+      <td><a href="https://youtube.com/watch?v=${v.ytId}" target="_blank" style="color:var(--g);font-size:12px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Voir</a></td>
       <td style="font-size:11.5px;color:var(--tl)">${fd(v.date)}</td>
       <td><button class="btn bdn bsm bic" onclick="delCo('v','${v.id}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button></td>
     </tr>`).join('');
