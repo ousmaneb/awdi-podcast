@@ -15,9 +15,10 @@
 }
 
 /* ── Logo dark/light swap ── */
-.logo-dark { display: none; }
-[data-theme="dark"] .logo-light { display: none; }
-[data-theme="dark"] .logo-dark { display: inline-block; mix-blend-mode: screen; }
+.logo-dark { display: none !important; }
+.logo-light { mix-blend-mode: multiply; }
+[data-theme="dark"] .logo-light { display: none !important; }
+[data-theme="dark"] .logo-dark { display: inline-block !important; mix-blend-mode: screen; }
 
 /* ── Custom scrollbar ── */
 ::-webkit-scrollbar { width: 5px; height: 5px; }

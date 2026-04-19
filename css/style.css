@@ -1053,10 +1053,9 @@ section {
 }
 
 .footer-brand-col .footer-logo-link img {
-  height: 48px !important;
+  height: 80px !important;
   width: auto !important;
-  max-width: 200px !important;
-  display: block !important;
+  max-width: 260px !important;
 }
 
 .footer-tagline {
