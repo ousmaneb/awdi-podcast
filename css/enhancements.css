@@ -7,24 +7,24 @@
    DARK MODE
 ───────────────────────────────────────────────────── */
 [data-theme="dark"] {
-  --ink:        #E8F0EA;
-  --ink-2:      #C0CEBD;
-  --ink-3:      #7D9183;
-  --ink-4:      #4D6554;
-  --canvas:     #0F1A12;
-  --canvas-2:   #162019;
-  --canvas-3:   #1C2A1F;
-  --border:     #2A3D2E;
-  --border-2:   #1F2E23;
-  --white:      #162019;
-  --green-pale: rgba(46,155,91,0.15);
-  --green-ink:  #0A1E0D;
+  --ink:        #f1f5f9;
+  --ink-2:      #cbd5e1;
+  --ink-3:      #94a3b8;
+  --ink-4:      #64748b;
+  --canvas:     #0d1117;
+  --canvas-2:   #161b22;
+  --canvas-3:   #1c2128;
+  --border:     #2d333b;
+  --border-2:   #22272e;
+  --white:      #161b22;
+  --green-pale: rgba(22,163,74,0.15);
+  --green-ink:  #052e16;
 }
 
 [data-theme="dark"] body { background: var(--canvas); }
 
 [data-theme="dark"] .navbar {
-  background: rgba(15, 26, 18, 0.94) !important;
+  background: rgba(13, 17, 23, 0.97) !important;
   border-bottom-color: var(--border-2) !important;
 }
 
@@ -56,6 +56,10 @@
 /* logo2.png = dark-mode logo */
 [data-theme="dark"] .logo-dark  { display: inline-block !important; }
 [data-theme="dark"] .logo-light { display: none !important; }
+
+/* mix-blend-mode: screen makes black pixels transparent so logo2's
+   solid black background disappears against any dark surface */
+[data-theme="dark"] .logo-dark { mix-blend-mode: screen; }
 
 .logo-dark { display: none !important; }
 .logo-light { display: inline-block !important; }

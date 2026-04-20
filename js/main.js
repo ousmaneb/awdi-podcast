@@ -1,5 +1,17 @@
 // ===== AWDI PODCAST — Main JS v3 =====
 
+/* ── Global toast notification ── */
+function showToast(message) {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ${message}`;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add('show'));
+  setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 400); }, 3000);
+}
+
 /* ── bfcache: remove page-exiting on restore ── */
 window.addEventListener('pageshow', (e) => {
   if (e.persisted) document.body.classList.remove('page-exiting');
@@ -16,8 +28,7 @@ function renderEpisodeCard(ep) {
     <article class="ep-card reveal-hidden" data-tag="${ep.tag}">
       <a href="${ep.youtubeUrl}" target="_blank" rel="noopener" class="ep-card-thumb" aria-label="Regarder ${ep.title}">
         <img src="${thumb}" alt="${ep.title}" loading="lazy" />
-        <span class="ep-card-num">Ép. ${ep.id}</span>
-        <span class="ep-card-play-icon">
+<span class="ep-card-play-icon">
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
             <circle cx="12" cy="12" r="12" fill="rgba(255,255,255,0.95)"/>
             <polygon points="10 8 17 12 10 16 10 8" fill="#1B6B3A"/>
@@ -67,7 +78,7 @@ function renderFeaturedEpisode() {
       <div class="featured-ep-info">
         <div class="featured-ep-badge">
           <span class="live-dot"></span>
-          Épisode ${ep.id} · Dernier épisode
+          Dernier épisode
         </div>
         <h2 class="featured-ep-title" id="featured-ep-title">${ep.title}</h2>
         <p class="featured-ep-desc">${ep.excerpt}</p>
@@ -104,7 +115,7 @@ function renderMarquee() {
   const el = document.getElementById('ep-marquee');
   if (!el || !window.AWDI_DATA) return;
   const items = AWDI_DATA.episodes
-    .map(ep => `<span class="ep-marquee-item">Épisode ${ep.id} — ${ep.title}</span><span class="ep-marquee-dot">◆</span>`)
+    .map(ep => `<span class="ep-marquee-item">${ep.title}</span><span class="ep-marquee-dot">◆</span>`)
     .join('');
   el.innerHTML = `<div class="ep-marquee-track">${items}${items}</div>`;
 }

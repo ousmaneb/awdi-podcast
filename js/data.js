@@ -7,6 +7,8 @@ window.AWDI_DATA = {
   // ── Episodes ────────────────────────────────────────────────────────────
   // Add new episodes at the top (descending order).
   // youtubeId: the part after ?v= in the YouTube URL.
+  // Add new episodes here. Use the real YouTube video ID from your channel.
+  // youtubeId: the part after ?v= in the YouTube URL.
   episodes: [
     {
       id: 52,
@@ -27,78 +29,6 @@ window.AWDI_DATA = {
       tag: "Deuil",
       duration: "44 min",
       date: "1 Avr 2025",
-      youtubeId: "PWM1SpS78WE",
-      youtubeUrl: "https://www.youtube.com/watch?v=PWM1SpS78WE",
-      spotifyUrl: "https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq",
-      featured: false
-    },
-    {
-      id: 50,
-      title: "L'image de soi et les réseaux sociaux",
-      excerpt: "Comment les algorithmes façonnent notre rapport à nous-mêmes, et comment reprendre le contrôle de son image intérieure.",
-      tag: "Identité",
-      duration: "41 min",
-      date: "18 Mar 2025",
-      youtubeId: "OyLgZpoeJFM",
-      youtubeUrl: "https://www.youtube.com/watch?v=OyLgZpoeJFM",
-      spotifyUrl: "https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq",
-      featured: false
-    },
-    {
-      id: 49,
-      title: "Burn-out : reconnaître les signaux",
-      excerpt: "Le burn-out ne prévient pas. Mais ses signaux sont là, bien avant l'épuisement total. Comment les repérer — et s'arrêter à temps ?",
-      tag: "Bien-être",
-      duration: "36 min",
-      date: "4 Mar 2025",
-      youtubeId: "PWM1SpS78WE",
-      youtubeUrl: "https://www.youtube.com/watch?v=PWM1SpS78WE",
-      spotifyUrl: "https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq",
-      featured: false
-    },
-    {
-      id: 48,
-      title: "La relation avec ses parents",
-      excerpt: "Amour, blessures, distance ou proximité — la relation parentale est l'une des plus déterminantes de notre vie. Comment la nommer ?",
-      tag: "Relations",
-      duration: "52 min",
-      date: "18 Fév 2025",
-      youtubeId: "OyLgZpoeJFM",
-      youtubeUrl: "https://www.youtube.com/watch?v=OyLgZpoeJFM",
-      spotifyUrl: "https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq",
-      featured: false
-    },
-    {
-      id: 47,
-      title: "Solitude vs Isolement, comprendre la différence",
-      excerpt: "Deux réalités proches mais profondément différentes. Comprendre la différence pour mieux habiter sa solitude sans en souffrir.",
-      tag: "Lien social",
-      duration: "33 min",
-      date: "4 Fév 2025",
-      youtubeId: "PWM1SpS78WE",
-      youtubeUrl: "https://www.youtube.com/watch?v=PWM1SpS78WE",
-      spotifyUrl: "https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq",
-      featured: false
-    },
-    {
-      id: 46,
-      title: "Dire non sans culpabilité",
-      excerpt: "Pourquoi sommes-nous si nombreux à ne pas savoir dire non ? Et comment poser des limites saines sans se sentir égoïste ?",
-      tag: "Relations",
-      duration: "39 min",
-      date: "21 Jan 2025",
-      youtubeId: "OyLgZpoeJFM",
-      youtubeUrl: "https://www.youtube.com/watch?v=OyLgZpoeJFM",
-      spotifyUrl: "https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq",
-      featured: false
-    },
-    {
-      id: 45,
-      title: "L'estime de soi au quotidien",
-      excerpt: "L'estime de soi ne se décrète pas. Elle se construit, se nourrit, et se répare. Un épisode concret sur les habitudes qui changent tout.",
-      tag: "Confiance",
-      duration: "35 min",
-      date: "7 Jan 2025",
       youtubeId: "PWM1SpS78WE",
       youtubeUrl: "https://www.youtube.com/watch?v=PWM1SpS78WE",
       spotifyUrl: "https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq",
