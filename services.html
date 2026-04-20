@@ -8,40 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=26" />
-  <link rel="stylesheet" href="css/enhancements.css?v=26" />
+  <link rel="stylesheet" href="css/style.css?v=45" />
+  <link rel="stylesheet" href="css/enhancements.css?v=28" />
   <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-  <style>
-    .guarantee-strip { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; padding:28px 40px; background:var(--green-pale); border-top:1px solid rgba(46,155,91,0.1); border-bottom:1px solid rgba(46,155,91,0.1); }
-    .guarantee-item { display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600; color:var(--green-dark); }
-    .guarantee-item svg { flex-shrink:0; }
-    .faq-item { border:1px solid rgba(46,155,91,0.12); border-radius:var(--radius-sm); margin-bottom:12px; overflow:hidden; }
-    .faq-question { padding:18px 24px; font-size:16px; font-weight:600; color:var(--text-dark); cursor:pointer; display:flex; justify-content:space-between; align-items:center; background:var(--white); transition:var(--transition); }
-    .faq-question:hover, .faq-question.open { background:var(--green-pale); color:var(--green-dark); }
-    .faq-answer { padding:0 24px; max-height:0; overflow:hidden; transition:max-height 0.3s ease, padding 0.3s ease; font-size:15px; color:var(--text-mid); line-height:1.7; }
-    .faq-answer.open { padding:16px 24px 20px; max-height:400px; }
-    .faq-chevron { transition:transform 0.3s ease; color:var(--green-primary); display:flex; align-items:center; }
-    .faq-question.open .faq-chevron { transform:rotate(180deg); }
-    .stripe-wrap { margin-top:16px; }
-    .stripe-wrap stripe-buy-button { width:100%; }
-    .stripe-badge { display:inline-flex; align-items:center; gap:6px; font-size:12px; color:var(--text-light); margin-top:8px; justify-content:center; width:100%; }
-    .stripe-badge svg { flex-shrink:0; }
-    .service-card.featured .stripe-badge { color:rgba(255,255,255,0.55); }
-    .service-card.featured .stripe-badge svg { stroke:rgba(255,255,255,0.55); }
-    .btn-pay {
-      display:flex; align-items:center; justify-content:center; gap:8px;
-      width:100%; padding:13px 20px; border-radius:50px;
-      font-size:15px; font-weight:700; text-decoration:none; cursor:pointer;
-      border:none; font-family:inherit; transition:all 0.3s ease;
-      background:var(--green-primary); color:white;
-    }
-    .btn-pay:hover { background:var(--green-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(46,155,91,0.35); }
-    .service-card.featured .btn-pay { background:white; color:var(--green-dark); }
-    .service-card.featured .btn-pay:hover { background:var(--green-pale); }
-    .pay-or { font-size:11px; color:var(--text-light); text-align:center; margin:8px 0; text-transform:uppercase; letter-spacing:1px; }
-    .service-card.featured .pay-or { color:rgba(255,255,255,0.4); }
-  </style>
-    <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+  <link rel="dns-prefetch" href="https://img.youtube.com" />
+  <link rel="dns-prefetch" href="https://www.youtube.com" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png" />
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 </head>
 <body>
@@ -59,201 +33,195 @@
     <button class="nav-mobile-btn" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
   </nav>
 
-  <div class="page-hero">
+  <div class="page-hero page-hero--services">
     <div class="breadcrumb"><a href="index.html">Accueil</a> &rsaquo; Services</div>
     <h1>Un accompagnement pour vous</h1>
     <p>Parce que parfois, écouter un podcast ne suffit pas. Je propose des services personnalisés pour vous accompagner dans votre parcours.</p>
   </div>
 
-  <!-- GARANTIES -->
-  <div class="guarantee-strip">
-    <div class="guarantee-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      Paiement sécurisé
-    </div>
-    <div class="guarantee-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-      Espace bienveillant
-    </div>
-    <div class="guarantee-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-      Personnalisé pour vous
-    </div>
-    <div class="guarantee-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Flexible et accessible
-    </div>
-    <div class="guarantee-item">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Confidentialité totale
+  <!-- TRUST BAR -->
+  <div class="sv-trust-bar">
+    <div class="container">
+      <div class="sv-trust-items">
+        <div class="sv-trust-item">
+          <span class="sv-trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          Paiement sécurisé
+        </div>
+        <span class="sv-trust-sep"></span>
+        <div class="sv-trust-item">
+          <span class="sv-trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+          Espace bienveillant
+        </div>
+        <span class="sv-trust-sep"></span>
+        <div class="sv-trust-item">
+          <span class="sv-trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+          Personnalisé pour vous
+        </div>
+        <span class="sv-trust-sep"></span>
+        <div class="sv-trust-item">
+          <span class="sv-trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          Flexible &amp; accessible
+        </div>
+        <span class="sv-trust-sep"></span>
+        <div class="sv-trust-item">
+          <span class="sv-trust-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          Confidentialité totale
+        </div>
+      </div>
     </div>
   </div>
 
-  <section>
+  <!-- FEATURED SERVICE -->
+  <section class="sv-featured-section">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header section-header--center">
         <span class="section-label">Ce que je propose</span>
         <h2>Choisissez votre accompagnement</h2>
         <p>Chaque service est conçu pour vous rencontrer là où vous en êtes, sans jugement, avec toute la bienveillance possible.</p>
       </div>
 
-      <div class="services-grid">
-
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <h3>Session découverte</h3>
-          <div class="service-price">Gratuit</div>
-          <p>Un premier échange de 20 minutes pour faire connaissance, comprendre vos besoins et voir comment je peux vous accompagner.</p>
-          <ul class="service-features">
-            <li>Appel vidéo ou téléphonique</li>
-            <li>20 minutes sans engagement</li>
-            <li>Présentation de mes services</li>
-            <li>Réponse à vos questions</li>
-          </ul>
-          <a href="rendez-vous.html" class="btn btn-secondary" style="width:100%;justify-content:center;">Réserver gratuitement</a>
-        </div>
-
-        <div class="service-card featured">
-          <div style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);color:white;font-size:12px;font-weight:700;padding:4px 12px;border-radius:50px;">Le plus choisi</div>
-          <div class="service-icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+      <!-- Featured: Séance individuelle -->
+      <div class="sv-hero-card">
+        <div class="sv-hero-left">
+          <span class="sv-hero-badge">⭐ Le plus choisi</span>
+          <div class="sv-hero-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
           </div>
           <h3>Séance individuelle</h3>
-          <div class="service-price">60€ <span>/ séance</span></div>
+          <div class="sv-hero-price">60€ <span>/ séance</span></div>
           <p>Un espace dédié pour parler, être entendu·e et repartir avec des outils adaptés à votre situation.</p>
-          <ul class="service-features">
+          <ul class="sv-check-list">
             <li>60 minutes en visio ou présentiel</li>
             <li>Écoute active et bienveillante</li>
             <li>Outils pratiques personnalisés</li>
             <li>Suivi entre les séances</li>
             <li>Compte-rendu écrit si souhaité</li>
           </ul>
-          <div class="stripe-wrap">
-            <!-- Stripe Buy Button — Séance individuelle 60€
-                 Remplacer buy-button-id et publishable-key par vos valeurs Stripe -->
+        </div>
+        <div class="sv-hero-right">
+          <div class="sv-hero-stripe">
+            <p class="sv-stripe-label">Réserver votre séance</p>
             <stripe-buy-button
               buy-button-id="buy_btn_1TO4A7C1QVedfaeTNPDdeUxC"
               publishable-key="pk_live_51T2IKBC1QVedfaeTkshyTxUOjTYzO9KrcZvtp84vgBBNUcSSadJGIAHJC9oj8TduZDNMssShshgErffHcAhJdghf00wwyKRGQh">
             </stripe-buy-button>
-<span class="stripe-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span class="stripe-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
               Paiement sécurisé par Stripe
             </span>
           </div>
+          <a href="rendez-vous.html" class="sv-discover-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            D'abord une session découverte gratuite →
+          </a>
+        </div>
+      </div>
+
+      <!-- Other services grid -->
+      <div class="sv-cards-grid">
+
+        <div class="sv-card">
+          <div class="sv-card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="sv-card-tag">Gratuit</div>
+          <h3>Session découverte</h3>
+          <p>Un premier échange de 20 minutes pour faire connaissance, comprendre vos besoins et voir comment je peux vous accompagner.</p>
+          <ul class="sv-check-list">
+            <li>Appel vidéo ou téléphonique</li>
+            <li>20 minutes sans engagement</li>
+            <li>Présentation de mes services</li>
+          </ul>
+          <a href="rendez-vous.html" class="btn btn-secondary btn-full sv-card-btn">Réserver gratuitement</a>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+        <div class="sv-card">
+          <div class="sv-card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
           </div>
+          <div class="sv-card-tag">200€ / mois</div>
           <h3>Pack accompagnement</h3>
-          <div class="service-price">200€ <span>/ mois</span></div>
           <p>Un suivi mensuel pour avancer à votre rythme avec un cadre régulier et un soutien continu.</p>
-          <ul class="service-features">
-            <li>4 séances individuelles (1/semaine)</li>
-            <li>Accès messagerie entre les séances</li>
+          <ul class="sv-check-list">
+            <li>4 séances par mois</li>
+            <li>Messagerie entre les séances</li>
             <li>Plan d'actions personnalisé</li>
-            <li>Ressources exclusives</li>
-            <li>Économie de 40€ vs séances seules</li>
+            <li>Économie de 40€</li>
           </ul>
-          <div class="stripe-wrap">
-            <!-- Stripe Buy Button — Pack accompagnement 200€/mois
-                 Remplacer buy-button-id et publishable-key par vos valeurs Stripe -->
+          <div class="stripe-wrap sv-card-btn">
             <stripe-buy-button
               buy-button-id="buy_btn_1TO4FLC1QVedfaeTIWCLIixu"
               publishable-key="pk_live_51T2IKBC1QVedfaeTkshyTxUOjTYzO9KrcZvtp84vgBBNUcSSadJGIAHJC9oj8TduZDNMssShshgErffHcAhJdghf00wwyKRGQh">
             </stripe-buy-button>
-<span class="stripe-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              Paiement sécurisé par Stripe
-            </span>
+            <span class="stripe-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Paiement sécurisé par Stripe</span>
           </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <div class="sv-card">
+          <div class="sv-card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           </div>
+          <div class="sv-card-tag">30€ / atelier</div>
           <h3>Atelier en groupe</h3>
-          <div class="service-price">30€ <span>/ atelier</span></div>
-          <p>Des ateliers thématiques en petit groupe pour explorer ensemble des sujets liés à la santé mentale.</p>
-          <ul class="service-features">
-            <li>Groupes de 5 à 10 personnes max</li>
+          <p>Des ateliers thématiques en petit groupe pour explorer ensemble des sujets de santé mentale.</p>
+          <ul class="sv-check-list">
+            <li>5 à 10 personnes max</li>
             <li>90 minutes par atelier</li>
             <li>Thèmes variés (émotions, limites…)</li>
-            <li>Échanges et partage entre pairs</li>
           </ul>
-          <div class="stripe-wrap">
-            <!-- Stripe Buy Button — Atelier en groupe 30€
-                 Remplacer buy-button-id et publishable-key par vos valeurs Stripe -->
+          <div class="stripe-wrap sv-card-btn">
             <stripe-buy-button
               buy-button-id="buy_btn_1TO4GgC1QVedfaeTzY6AJcBi"
               publishable-key="pk_live_51T2IKBC1QVedfaeTkshyTxUOjTYzO9KrcZvtp84vgBBNUcSSadJGIAHJC9oj8TduZDNMssShshgErffHcAhJdghf00wwyKRGQh">
             </stripe-buy-button>
-<span class="stripe-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              Paiement sécurisé par Stripe
-            </span>
+            <span class="stripe-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Paiement sécurisé par Stripe</span>
           </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <div class="sv-card">
+          <div class="sv-card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
           </div>
+          <div class="sv-card-tag">15€ / guide</div>
           <h3>Guide numérique</h3>
-          <div class="service-price">15€ <span>/ guide</span></div>
-          <p>Des ressources pratiques et bienveillantes pour travailler à votre rythme, à tout moment.</p>
-          <ul class="service-features">
-            <li>Format PDF téléchargeable</li>
+          <p>Des ressources pratiques pour travailler à votre rythme, à tout moment, depuis chez vous.</p>
+          <ul class="sv-check-list">
+            <li>PDF téléchargeable</li>
             <li>Exercices pratiques inclus</li>
             <li>Disponible immédiatement</li>
-            <li>Sujets : anxiété, émotions, limites…</li>
           </ul>
-          <div class="stripe-wrap">
-            <!-- Stripe Buy Button — Guide numérique 15€
-                 Remplacer buy-button-id et publishable-key par vos valeurs Stripe -->
+          <div class="stripe-wrap sv-card-btn">
             <stripe-buy-button
               buy-button-id="buy_btn_1TO4HPC1QVedfaeT8zwFqQh7"
               publishable-key="pk_live_51T2IKBC1QVedfaeTkshyTxUOjTYzO9KrcZvtp84vgBBNUcSSadJGIAHJC9oj8TduZDNMssShshgErffHcAhJdghf00wwyKRGQh">
             </stripe-buy-button>
-<span class="stripe-badge">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              Paiement sécurisé par Stripe
-            </span>
+            <span class="stripe-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Paiement sécurisé par Stripe</span>
           </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--green-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+        <div class="sv-card sv-card--muted">
+          <div class="sv-card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
           </div>
+          <div class="sv-card-tag sv-card-tag--neutral">Sur devis</div>
           <h3>Conférence / Intervention</h3>
-          <div class="service-price" style="font-size:24px;">Sur devis</div>
           <p>Vous souhaitez organiser une conférence sur la santé mentale dans votre entreprise ou association ?</p>
-          <ul class="service-features">
+          <ul class="sv-check-list">
             <li>Sensibilisation des équipes</li>
             <li>Format adapté à votre contexte</li>
             <li>Présentiel ou distanciel</li>
-            <li>Devis personnalisé sous 48h</li>
+            <li>Devis sous 48h</li>
           </ul>
-          <a href="contact.html" class="btn btn-secondary" style="width:100%;justify-content:center;">Demander un devis</a>
+          <a href="contact.html" class="btn btn-secondary btn-full sv-card-btn">Demander un devis</a>
         </div>
 
-      </div>
-
-      <div style="text-align:center;margin-top:32px;padding:20px;background:var(--green-pale);border-radius:var(--radius-md);border:1px solid rgba(46,155,91,0.15);display:flex;align-items:center;justify-content:center;gap:12px;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        <p style="font-size:14px;color:var(--green-dark);margin:0;"><strong>Paiement sécurisé par Stripe.</strong> Vos données bancaires sont protégées. Aucune information n'est stockée sur ce site.</p>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
   <section class="bg-light">
-    <div class="container" style="max-width:800px;">
+    <div class="container container--md">
       <div class="section-header">
         <span class="section-label">Questions fréquentes</span>
         <h2>Ce que vous voulez savoir</h2>
@@ -280,8 +248,8 @@
           <div class="faq-answer">Je crois que l'aide doit être accessible. N'hésitez pas à me contacter pour discuter de solutions adaptées à votre situation. Il existe aussi des ressources gratuites (CMP, associations, lignes d'écoute) que je peux vous orienter à trouver.</div>
         </div>
       </div>
-      <div style="text-align:center;margin-top:40px;">
-        <p style="color:var(--text-mid);margin-bottom:16px;">Une autre question ? Je suis là.</p>
+      <div class="text-center mt-5">
+        <p style="color:var(--ink-3);margin-bottom:var(--s2);">Une autre question ? Je suis là.</p>
         <a href="contact.html" class="btn btn-secondary">Me contacter</a>
       </div>
     </div>
@@ -299,38 +267,53 @@
     </div>
   </section>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
+  <footer class="ft">
 
-      <div class="footer-grid">
-
-        <div class="footer-brand-col">
-          <a href="index.html" class="footer-logo-link">
-            <img src="assets/logo1.png" alt="Awdi Podcast" class="logo-light" style="height:80px;width:auto;" /><img src="assets/logo2.png" alt="Awdi Podcast" class="logo-dark" style="height:80px;width:auto;" />
+    <!-- Top band: dark green with tagline + socials -->
+    <div class="ft-top">
+      <div class="ft-top-inner">
+        <div class="ft-brand">
+          <a href="index.html" class="ft-logo">
+            <img src="assets/logo2.png" alt="Awdi Podcast" />
           </a>
-          <p class="footer-tagline">Santé mentale &amp; Prise de conscience</p>
-          <p class="footer-desc">Un espace bienveillant pour parler de santé mentale, d'émotions et de bien-être.</p>
-          <div class="footer-identity">
-            <div class="footer-badges">
-              <span>Peulh</span>
-              <span>Fulani</span>
-              <span>Poulo</span>
-            </div>
+          <p class="ft-tagline">Parler de santé mentale, sans tabou.</p>
+        </div>
+        <div class="ft-socials">
+          <a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" class="ft-social" target="_blank" rel="noopener" aria-label="Spotify">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@Awdi_podcast" class="ft-social" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/awdi.podcast/" class="ft-social" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@awdi_podcast" class="ft-social" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34l.04-8.22a8.16 8.16 0 0 0 4.77 1.52V5.17a4.85 4.85 0 0 1-1.05-.48z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/people/Awdi-Podcast/61581534275335/" class="ft-social" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main grid: description + 3 nav cols -->
+    <div class="ft-main">
+      <div class="ft-main-inner">
+
+        <div class="ft-col-brand">
+          <p class="ft-desc">Un espace sincère pour parler de santé mentale, d'émotions et de bien-être — en français, sans jugement, accessible à tous.</p>
+          <div class="ft-badges">
+            <span>Peulh</span><span>Fulani</span><span>Poulo</span>
           </div>
-          <a href="mailto:awdi.tidbarry@gmail.com" class="footer-email">
+          <a href="mailto:awdi.tidbarry@gmail.com" class="ft-email">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             awdi.tidbarry@gmail.com
           </a>
-          <div class="footer-socials">
-            <a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" class="footer-social-icon" target="_blank" rel="noopener" aria-label="Spotify"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
-            <a href="https://www.youtube.com/@Awdi_podcast" class="footer-social-icon" target="_blank" rel="noopener" aria-label="YouTube"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-            <a href="https://www.instagram.com/awdi.podcast/" class="footer-social-icon" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-            <a href="https://www.tiktok.com/@awdi_podcast" class="footer-social-icon" target="_blank" rel="noopener" aria-label="TikTok"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34l.04-8.22a8.16 8.16 0 0 0 4.77 1.52V5.17a4.85 4.85 0 0 1-1.05-.48z"/></svg></a>
-            <a href="https://www.facebook.com/people/Awdi-Podcast/61581534275335/" class="footer-social-icon" target="_blank" rel="noopener" aria-label="Facebook"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-          </div>
         </div>
 
-        <div class="footer-nav-col">
+        <div class="ft-col">
           <h5>Navigation</h5>
           <ul>
             <li><a href="index.html">Accueil</a></li>
@@ -341,8 +324,8 @@
           </ul>
         </div>
 
-        <div class="footer-nav-col">
-          <h5>Ressources</h5>
+        <div class="ft-col">
+          <h5>Accompagnement</h5>
           <ul>
             <li><a href="rendez-vous.html">Prendre RDV</a></li>
             <li><a href="contact.html">Contact</a></li>
@@ -351,30 +334,46 @@
           </ul>
         </div>
 
-        <div class="footer-nav-col">
-          <h5>Écouter</h5>
+        <div class="ft-col">
+          <h5>Écouter sur</h5>
           <ul>
-            <li><a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" target="_blank" rel="noopener">Spotify</a></li>
-            <li><a href="https://www.youtube.com/@Awdi_podcast" target="_blank" rel="noopener">YouTube</a></li>
-            <li><a href="https://www.amazon.fr/-/en/dp/B0GLRBMSWW/" target="_blank" rel="noopener">Amazon Music</a></li>
+            <li><a href="https://open.spotify.com/show/4qpYXLneuemPRcuMJTWDAq" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              Spotify
+            </a></li>
+            <li><a href="https://www.youtube.com/@Awdi_podcast" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              YouTube
+            </a></li>
+            <li><a href="https://www.amazon.fr/-/en/dp/B0GLRBMSWW/" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.047-.872-1.234-1.276-1.814-2.106-1.734 1.768-2.962 2.297-5.209 2.297-2.661 0-4.731-1.642-4.731-4.927 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.099v-.41c0-.753.06-1.642-.383-2.294-.385-.584-1.124-.826-1.775-.826-1.205 0-2.277.618-2.54 1.897-.054.285-.261.567-.549.582l-3.061-.333c-.259-.056-.548-.266-.472-.661C5.86 1.756 8.857.5 11.5.5c1.35 0 3.116.36 4.181 1.384 1.353 1.264 1.223 2.95 1.223 4.784v4.332c0 1.302.541 1.875 1.048 2.576.179.251.219.552-.01.738l-2.798 2.481zm3.362 1.061c-4.493 3.218-11.026 4.927-16.632 2.621C1.8 20.368.557 19.144.155 17.685c-.182-.658.37-1.229 1.013-.985 3.761 1.386 7.965 2.232 12.258 1.756 2.862-.316 5.923-1.212 8.445-2.579.413-.234.835.245.634.979z"/></svg>
+              Amazon Music
+            </a></li>
+            <li><a href="https://www.tiktok.com/@awdi_podcast" target="_blank" rel="noopener">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34l.04-8.22a8.16 8.16 0 0 0 4.77 1.52V5.17a4.85 4.85 0 0 1-1.05-.48z"/></svg>
+              TikTok
+            </a></li>
           </ul>
         </div>
 
       </div>
-
-      <div class="footer-bottom-bar">
-        <span>© 2026 Awdi Podcast · Tid Barry · Tous droits réservés</span>
-        <span class="footer-legal-links">
-          <a href="mentions-legales.html">Mentions légales</a>
-          <a href="politique-de-confidentialite.html">Politique de confidentialité</a>
-        </span>
-      </div>
-
     </div>
+
+    <!-- Bottom bar -->
+    <div class="ft-bottom">
+      <div class="ft-bottom-inner">
+        <span>© 2026 Awdi Podcast · Diariou Barry · Tous droits réservés</span>
+        <div class="ft-legal-links">
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="politique-de-confidentialite.html">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+
   </footer>
 
-  <script src="js/cms.js"></script>
-  <script src="js/main.js"></script>
+  <script defer src="js/cms.js"></script>
+  <script defer src="js/main.js"></script>
   <script>
     document.querySelectorAll('.faq-question').forEach(q => {
       q.addEventListener('click', function() {
