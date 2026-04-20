@@ -3687,8 +3687,9 @@ section.bg-light > .container {
 }
 
 @media (max-width: 768px) {
-  .videos-layout { grid-template-columns: 1fr; }
+  .videos-layout { grid-template-columns: 1fr; padding: 0; }
   .playlist-sidebar { order: 2; }
+  .playlist-items { max-height: none; overflow-y: visible; }
 }
 
 /* ── EPISODE FILTERS ── */
@@ -5380,8 +5381,11 @@ textarea { resize: vertical; min-height: 120px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .rdv-steps { grid-template-columns: repeat(2, 1fr); }
-  .videos-layout { grid-template-columns: 1fr; }
+  /* Video layout: single col, remove inner padding (container already pads) */
+  .videos-layout { grid-template-columns: 1fr; padding: 0; }
   .playlist-sidebar { position: static; }
+  /* Playlist: remove max-height scroll — show all items when stacked */
+  .playlist-items { max-height: none; overflow-y: visible; }
   .info-boxes { grid-template-columns: repeat(2, 1fr); }
   .blog-grid-main { grid-template-columns: repeat(2, 1fr); }
   .featured-article { grid-template-columns: 1fr; }
@@ -5391,6 +5395,10 @@ textarea { resize: vertical; min-height: 120px; }
   .services-grid { grid-template-columns: 1fr; }
   .rdv-steps { grid-template-columns: 1fr; }
   .contact-name-row { grid-template-columns: 1fr; }
+  /* Playlist items: compact on small screens */
+  .video-playlist-item { padding: 12px; gap: 10px; }
+  .video-thumb { width: 88px; height: 50px; }
+  .video-main-embed { border-radius: 10px; }
   .subject-grid { grid-template-columns: 1fr; }
   .info-boxes { grid-template-columns: 1fr; }
   .blog-grid-main { grid-template-columns: 1fr; }
