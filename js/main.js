@@ -82,22 +82,24 @@ document.addEventListener('DOMContentLoaded', function () {
     overlay.addEventListener('click', closeMenu);
   }
 
-  /* ── HERO MESH + ORBS ── */
-  const hero = document.querySelector('.hero');
-  if (hero) {
-    const mesh = document.createElement('div');
-    mesh.className = 'hero-mesh';
-    hero.prepend(mesh);
-    [
-      { w: 300, h: 300, top: '5%',  left: '65%', delay: 0,   dur: 12 },
-      { w: 200, h: 200, top: '55%', left: '75%', delay: 3,   dur: 9  },
-      { w: 250, h: 250, top: '30%', left: '3%',  delay: 1.5, dur: 11 },
-    ].forEach(o => {
-      const orb = document.createElement('div');
-      orb.className = 'hero-orb';
-      orb.style.cssText = `width:${o.w}px;height:${o.h}px;top:${o.top};left:${o.left};animation-delay:${o.delay}s;animation-duration:${o.dur}s;`;
-      hero.appendChild(orb);
-    });
+  /* ── HERO MESH + ORBS (desktop only) ── */
+  if (!isMobile) {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      const mesh = document.createElement('div');
+      mesh.className = 'hero-mesh';
+      hero.prepend(mesh);
+      [
+        { w: 300, h: 300, top: '5%',  left: '65%', delay: 0,   dur: 12 },
+        { w: 200, h: 200, top: '55%', left: '75%', delay: 3,   dur: 9  },
+        { w: 250, h: 250, top: '30%', left: '3%',  delay: 1.5, dur: 11 },
+      ].forEach(o => {
+        const orb = document.createElement('div');
+        orb.className = 'hero-orb';
+        orb.style.cssText = `width:${o.w}px;height:${o.h}px;top:${o.top};left:${o.left};animation-delay:${o.delay}s;animation-duration:${o.dur}s;`;
+        hero.appendChild(orb);
+      });
+    }
   }
 
   /* ── REVEAL ANIMATIONS ── */
@@ -225,6 +227,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* ── YOUTUBE FACADE ── */
+  document.querySelectorAll('.yt-facade').forEach(facade => {
+    facade.addEventListener('click', () => {
+      const vid = facade.dataset.vid;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${vid}?autoplay=1&rel=0`;
+      iframe.title = 'Awdi Podcast — YouTube';
+      iframe.frameBorder = '0';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+      facade.innerHTML = '';
+      facade.appendChild(iframe);
+    });
+  });
+
   /* ── FLOATING PODCAST PLAYER ── */
   if (!sessionStorage.getItem('player-dismissed')) {
     const player = document.createElement('div'); player.id = 'podcast-player';
@@ -244,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>`;
     document.body.appendChild(player);
-    setTimeout(() => player.classList.add('visible'), 3500);
+    setTimeout(() => player.classList.add('visible'), isMobile ? 8000 : 3500);
     player.querySelector('.player-close').addEventListener('click', () => {
       player.classList.remove('visible');
       sessionStorage.setItem('player-dismissed', '1');
