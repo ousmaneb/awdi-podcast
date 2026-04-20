@@ -104,25 +104,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ── REVEAL ANIMATIONS ── */
   const isMobile = window.innerWidth <= 768;
-  ['.feature-card','.blog-card','.service-card','.stat-item',
-   '.testimonial-card','.section-header','.platform-link',
-   '.video-card','.contact-info-item'].forEach(sel => {
-    document.querySelectorAll(sel).forEach((el, i) => {
-      el.classList.add('reveal-hidden');
-      el.dataset.delay = (i % 4) * 90;
+
+  if (!isMobile) {
+    ['.feature-card','.blog-card','.service-card','.stat-item',
+     '.testimonial-card','.section-header','.platform-link',
+     '.video-card','.contact-info-item'].forEach(sel => {
+      document.querySelectorAll(sel).forEach((el, i) => {
+        el.classList.add('reveal-hidden');
+        el.dataset.delay = (i % 4) * 90;
+      });
     });
-  });
-  const revealAll = () => document.querySelectorAll('.reveal-hidden:not(.revealed)').forEach(el => el.classList.add('revealed'));
-  const revealObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      setTimeout(() => entry.target.classList.add('revealed'), +(entry.target.dataset.delay || 0));
-      revealObs.unobserve(entry.target);
-    });
-  }, { threshold: 0.05, rootMargin: isMobile ? '0px' : '0px 0px -20px 0px' });
-  document.querySelectorAll('.reveal-hidden').forEach(el => revealObs.observe(el));
-  // Safety net: reveal anything still hidden after 1.8s (covers slow mobile connections)
-  setTimeout(revealAll, 1800);
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        setTimeout(() => entry.target.classList.add('revealed'), +(entry.target.dataset.delay || 0));
+        revealObs.unobserve(entry.target);
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    document.querySelectorAll('.reveal-hidden').forEach(el => revealObs.observe(el));
+    setTimeout(() => document.querySelectorAll('.reveal-hidden:not(.revealed)').forEach(el => el.classList.add('revealed')), 2000);
+  }
 
   /* ── COUNTERS ── */
   const cntObs = new IntersectionObserver(entries => {
@@ -278,9 +279,9 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', () => btt.classList.toggle('visible', window.scrollY > 400), { passive: true });
   btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  /* ── IMAGE FADE-IN ── */
+  /* ── IMAGE FADE-IN (desktop only) ── */
   document.querySelectorAll('img').forEach(img => {
-    // Skip eager/featured images — don't hide them while loading
+    if (isMobile) return; // never hide images on mobile
     if (img.loading === 'eager' || img.closest('.latest-ep-thumb')) return;
     if (!img.complete) {
       img.classList.add('img-loading');

@@ -955,12 +955,12 @@ img.img-loaded  { opacity: 1; }
   .stat-number { animation: none !important; -webkit-text-fill-color: #6ee7a0; }
   .stats-dark .stat-number { -webkit-text-fill-color: #6ee7a0 !important; }
 
-  /* Reveal fallback */
+  /* No reveal animation on mobile — always visible */
   .reveal-hidden {
-    animation: mobileReveal 0.5s ease 1.2s both;
-  }
-  @keyframes mobileReveal {
-    to { opacity: 1; transform: translateY(0); }
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
   }
 }
 
