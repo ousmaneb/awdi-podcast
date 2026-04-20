@@ -595,7 +595,7 @@ function renderDash(){
   const rec=[...s].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,5);
   const tb=document.getElementById('dtbl');
   tb.innerHTML=!rec.length?'<tr class="er"><td colspan="5">Aucune soumission.</td></tr>':
-    rec.map(x=>`<tr><td>${tbdg(x.type)}</td><td>${e(x.data?.prenom?(x.data.prenom+' '+(x.data.nom||'')):x.data?.nom||'—')}</td><td style="color:var(--tl);font-size:12px">${e(x.data?.email||'—')}</td><td style="color:var(--tl);font-size:12px">${fd(x.date)}</td><td><button class="btn bs2 bsm bic" onclick="openSub('${x.id}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td></tr>`).join('');
+    rec.map(x=>`<tr><td>${tbdg(x.type)}</td><td>${e(x.data?.prenom?(x.data.prenom+' '+(x.data.nom||'')):x.data?.nom||'-')}</td><td style="color:var(--tl);font-size:12px">${e(x.data?.email||'-')}</td><td style="color:var(--tl);font-size:12px">${fd(x.date)}</td><td><button class="btn bs2 bsm bic" onclick="openSub('${x.id}')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></td></tr>`).join('');
 }
 
 // TESTIMONIALS
@@ -754,7 +754,7 @@ function renderSubs(){
       <div><div class="sct">${e(x.data?.prenom?(x.data.prenom+' '+(x.data.nom||'')):x.data?.nom||'Anonyme')}</div><div style="font-size:11px;color:var(--tl)">${e(x.data?.email||'')}</div></div>
       ${tbdg(x.type)}<span class="scd">${fd(x.date)}</span>
     </div>
-    <div class="scb">${e((x.data?.message||x.data?.sujet||x.data?.service||'—').slice(0,150))}</div>
+    <div class="scb">${e((x.data?.message||x.data?.sujet||x.data?.service||'-').slice(0,150))}</div>
   </div>`).join('');
 }
 function openSub(id){
