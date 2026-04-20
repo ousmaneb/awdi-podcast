@@ -735,8 +735,14 @@ img.img-loaded  { opacity: 1; }
   position: relative; border-radius: 16px; overflow: hidden;
   box-shadow: 0 24px 80px rgba(0,0,0,.5);
   aspect-ratio: 16/9;
+  background: #0d1a14;
 }
-.latest-ep-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+/* Fallback for browsers without aspect-ratio support */
+@supports not (aspect-ratio: 16/9) {
+  .latest-ep-thumb { padding-bottom: 56.25%; height: 0; }
+  .latest-ep-thumb img, .latest-ep-thumb a { position: absolute; inset: 0; }
+}
+.latest-ep-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; opacity: 1 !important; }
 .latest-ep-thumb:hover img { transform: scale(1.04); }
 .latest-ep-play-overlay {
   position: absolute; inset: 0;

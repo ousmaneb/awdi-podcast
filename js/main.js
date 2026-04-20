@@ -262,6 +262,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ── IMAGE FADE-IN ── */
   document.querySelectorAll('img').forEach(img => {
+    // Skip eager/featured images — don't hide them while loading
+    if (img.loading === 'eager' || img.closest('.latest-ep-thumb')) return;
     if (!img.complete) {
       img.classList.add('img-loading');
       const reveal = () => { img.classList.remove('img-loading'); img.classList.add('img-loaded'); };
