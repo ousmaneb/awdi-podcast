@@ -5609,10 +5609,77 @@ textarea { resize: vertical; min-height: 120px; }
   .ft-main-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
 @media (max-width: 600px) {
-  .ft-top-inner { flex-direction: column; align-items: flex-start; }
-  .ft-brand { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .ft-main-inner { grid-template-columns: 1fr 1fr; gap: 28px; }
-  .ft-bottom-inner { flex-direction: column; align-items: flex-start; }
+  /* ── Top band: centered identity ── */
+  .ft-top { padding: 32px 0 28px; }
+  .ft-top-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 0 20px;
+  }
+  .ft-brand {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .ft-logo img { height: 44px; }
+  .ft-tagline { font-size: 13px; }
+  .ft-socials {
+    gap: 10px;
+    justify-content: center;
+  }
+  .ft-social {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* ── Main section: brand full-width, nav in 2-col ── */
+  .ft-main { padding: 36px 0 28px; }
+  .ft-main-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0 20px;
+  }
+  .ft-col-brand {
+    grid-column: 1 / -1;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    gap: 12px;
+  }
+  .ft-desc {
+    max-width: 100%;
+    font-size: 13.5px;
+  }
+  .ft-badges { justify-content: center; }
+  .ft-email { justify-content: center; }
+  .ft-col {
+    padding: 0 8px 0 0;
+  }
+  .ft-col:last-child { padding: 0; }
+  .ft-col h5 { margin-bottom: 12px; }
+  .ft-col ul { gap: 8px; }
+  .ft-col ul li a { font-size: 13px; }
+
+  /* ── Bottom bar: centered ── */
+  .ft-bottom { padding: 18px 0; }
+  .ft-bottom-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 0 20px;
+  }
+  .ft-legal-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
 }
 
 /* ── MOBILE PERFORMANCE + UX ── */
