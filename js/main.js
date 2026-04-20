@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ── REVEAL ANIMATIONS ── */
+  const isMobile = window.innerWidth <= 768;
   ['.feature-card','.blog-card','.service-card','.stat-item',
    '.testimonial-card','.section-header','.platform-link',
    '.video-card','.contact-info-item'].forEach(sel => {
@@ -109,14 +110,17 @@ document.addEventListener('DOMContentLoaded', function () {
       el.dataset.delay = (i % 4) * 90;
     });
   });
+  const revealAll = () => document.querySelectorAll('.reveal-hidden:not(.revealed)').forEach(el => el.classList.add('revealed'));
   const revealObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       setTimeout(() => entry.target.classList.add('revealed'), +(entry.target.dataset.delay || 0));
       revealObs.unobserve(entry.target);
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.05, rootMargin: isMobile ? '0px' : '0px 0px -20px 0px' });
   document.querySelectorAll('.reveal-hidden').forEach(el => revealObs.observe(el));
+  // Safety net: reveal anything still hidden after 1.8s (covers slow mobile connections)
+  setTimeout(revealAll, 1800);
 
   /* ── COUNTERS ── */
   const cntObs = new IntersectionObserver(entries => {
@@ -260,8 +264,11 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('img').forEach(img => {
     if (!img.complete) {
       img.classList.add('img-loading');
-      img.addEventListener('load',  () => { img.classList.remove('img-loading'); img.classList.add('img-loaded'); });
-      img.addEventListener('error', () => img.classList.remove('img-loading'));
+      const reveal = () => { img.classList.remove('img-loading'); img.classList.add('img-loaded'); };
+      img.addEventListener('load',  reveal);
+      img.addEventListener('error', reveal);
+      // Fallback: show image after 3s regardless
+      setTimeout(reveal, 3000);
     }
   });
 

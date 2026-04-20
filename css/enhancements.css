@@ -914,6 +914,16 @@ img.img-loaded  { opacity: 1; }
 [data-theme="dark"] .faq-question { color: var(--text-dark) !important; }
 [data-theme="dark"] .faq-answer-inner { border-top-color: rgba(46,155,91,.15) !important; }
 
+/* ── Mobile: ensure reveal-hidden elements become visible ── */
+@media (max-width: 768px) {
+  .reveal-hidden {
+    animation: mobileReveal 0.6s ease 1.5s both;
+  }
+  @keyframes mobileReveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
 /* ── Mobile nav overlay ── */
 .nav-overlay {
   display: none;
