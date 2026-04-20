@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.appendChild(overlay);
 
     // Inject branded drawer header (logo + close button)
-    const drawerLogo = document.querySelector('.nav-logo img.logo-dark') || document.querySelector('.nav-logo img');
+    const drawerLogo = document.querySelector('.nav-logo img.logo-light') || document.querySelector('.nav-logo img');
     const drawerHeader = document.createElement('div');
     drawerHeader.className = 'nav-drawer-header';
     drawerHeader.innerHTML = `<img src="${drawerLogo ? drawerLogo.src : 'assets/logo2.png'}" alt="Awdi Podcast" class="nav-drawer-logo"><button class="nav-drawer-close" aria-label="Fermer le menu"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>`;
