@@ -332,8 +332,6 @@ svg { flex-shrink: 0; }
 }
 /* Only show the light-background logo in the navbar */
 .nav-logo .logo-dark { display: none !important; }
-/* Blend logo background into the navbar so no visible rectangle */
-.nav-logo .logo-light { mix-blend-mode: multiply; }
 
 .nav-links {
   display: flex;
@@ -5371,9 +5369,8 @@ textarea { resize: vertical; min-height: 120px; }
 
 /* ════ INNER PAGES — RESPONSIVE ════ */
 @media (max-width: 960px) {
-  /* A-propos: remove inner padding (container already provides it) */
-  .about-content { grid-template-columns: 1fr; gap: 36px; padding: 56px 0; }
-  .features-grid { grid-template-columns: repeat(2, 1fr); padding: 0; }
+  .about-content { grid-template-columns: 1fr; gap: 40px; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .rdv-steps { grid-template-columns: repeat(2, 1fr); }
@@ -5385,14 +5382,16 @@ textarea { resize: vertical; min-height: 120px; }
   .info-boxes { grid-template-columns: repeat(2, 1fr); }
   .blog-grid-main { grid-template-columns: repeat(2, 1fr); }
   .featured-article { grid-template-columns: 1fr; }
-  /* Host section */
+}
+/* Host section collapses at 800px (tablets), not 960px */
+@media (max-width: 800px) {
   .host-layout { grid-template-columns: 1fr; gap: 28px; }
   .host-visual-col { flex-direction: column; align-items: stretch; }
   .host-photo-wrap { flex: none; }
 }
 @media (max-width: 640px) {
-  /* A-propos image: landscape ratio saves height on small screens */
-  .about-content { padding: 40px 0; gap: 28px; }
+  /* A-propos: reduce padding on small screens */
+  .about-content { padding: 0; gap: 28px; }
   .about-img-placeholder { aspect-ratio: 16 / 9; }
   .about-heading { font-size: clamp(22px, 7vw, 30px); }
   .about-callout { padding: 14px 16px; }
