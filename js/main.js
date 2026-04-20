@@ -82,6 +82,9 @@ document.addEventListener('DOMContentLoaded', function () {
     overlay.addEventListener('click', closeMenu);
   }
 
+  /* ── MOBILE DETECTION ── */
+  const isMobile = window.innerWidth <= 768;
+
   /* ── HERO MESH + ORBS (desktop only) ── */
   if (!isMobile) {
     const hero = document.querySelector('.hero');
@@ -103,8 +106,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ── REVEAL ANIMATIONS ── */
-  const isMobile = window.innerWidth <= 768;
-
   if (!isMobile) {
     ['.feature-card','.blog-card','.service-card','.stat-item',
      '.testimonial-card','.section-header','.platform-link',
