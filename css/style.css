@@ -330,6 +330,8 @@ svg { flex-shrink: 0; }
   width: auto;
   object-fit: contain;
 }
+/* Only show the light-background logo in the navbar (dark-bg logo used in footer/drawer) */
+.nav-logo .logo-dark { display: none; }
 
 .nav-links {
   display: flex;
@@ -2029,13 +2031,17 @@ body.page-exiting { opacity: 0; pointer-events: none; }
   }
   .nav-links a::after { display: none !important; }
 
-  /* RDV link: full-width pill at bottom */
+  /* Hamburger always at far right regardless of wrapper */
+  .nav-mobile-btn { justify-self: end; }
+
+  /* RDV link: full-width pill at bottom (nav-rdv and nav-cta are both used across pages) */
   .nav-links li:last-child {
     padding: 20px 20px 0 !important;
     margin-top: auto !important;
     border-top: 1px solid rgba(255,255,255,0.08) !important;
   }
-  .nav-links a.nav-rdv {
+  .nav-links a.nav-rdv,
+  .nav-links a.nav-cta {
     background: var(--green) !important;
     color: #fff !important;
     border-radius: var(--r-full) !important;
@@ -2047,12 +2053,14 @@ body.page-exiting { opacity: 0; pointer-events: none; }
     border-bottom: none !important;
     width: 100% !important;
   }
-  .nav-links a.nav-rdv:hover {
+  .nav-links a.nav-rdv:hover,
+  .nav-links a.nav-cta:hover {
     background: var(--green-dk) !important;
     padding-left: 24px !important;
     color: #fff !important;
   }
-  .nav-links a.nav-rdv.active {
+  .nav-links a.nav-rdv.active,
+  .nav-links a.nav-cta.active {
     color: #fff !important;
     background: var(--green-dk) !important;
     padding-left: 24px !important;
@@ -2563,7 +2571,7 @@ section.bg-light > .container {
   .page-hero { padding: calc(var(--nav-h) + var(--s5)) var(--s3) var(--s5); }
   .bg-light > .container { padding-top: var(--s5); padding-bottom: var(--s5); }
   .footer-bottom-bar { flex-direction: column; gap: var(--s2); text-align: center; }
-  .nav-links a.nav-cta { margin-top: var(--s2) !important; text-align: center !important; justify-content: center !important; }
+  /* nav-cta drawer styles handled in the 768px mobile nav block above */
   section:not([class]) > .container,
   section.bg-light > .container { padding-top: var(--s5); padding-bottom: var(--s5); }
 }
