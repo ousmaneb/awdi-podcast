@@ -656,10 +656,20 @@ img.img-loaded  { opacity: 1; }
   #back-to-top { bottom: 80px; right: 16px; }
 
   /* Latest episode */
-  .latest-ep-inner { grid-template-columns: 1fr; gap: 32px; }
-  .latest-ep-card { padding: 44px 20px; }
-  .latest-ep-actions { flex-direction: column; }
-  .ep-btn-spotify, .ep-btn-yt { justify-content: center; }
+  .latest-ep-card { padding: 36px 20px 48px; }
+  .latest-ep-inner { grid-template-columns: 1fr; gap: 24px; }
+  .latest-ep-thumb { max-width: 100%; }
+  .latest-ep-info h2 { font-size: 21px; line-height: 1.35; }
+  .latest-ep-info p { font-size: 14px; margin-bottom: 18px; }
+  .latest-ep-live-badge { font-size: 10px; padding: 5px 12px; }
+  .latest-ep-meta { flex-wrap: wrap; gap: 12px 18px; margin-bottom: 24px; }
+  .latest-ep-actions { flex-direction: column; gap: 10px; }
+  .ep-btn-spotify, .ep-btn-yt {
+    justify-content: center;
+    width: 100%;
+    padding: 13px 20px;
+    font-size: 14px;
+  }
 
   /* Host section */
   .host-content { grid-template-columns: 1fr; gap: 40px; }
