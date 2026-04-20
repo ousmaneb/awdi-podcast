@@ -1,6 +1,14 @@
 // ===== AWDI PODCAST — DYNAMIC JS v2 =====
 
+/* ── bfcache safety: remove page-exiting if browser restores from cache ── */
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted) document.body.classList.remove('page-exiting');
+});
+
 document.addEventListener('DOMContentLoaded', function () {
+
+  /* ── Safety: ensure body is never stuck invisible on load ── */
+  document.body.classList.remove('page-exiting');
 
   /* ── SCROLL PROGRESS ── */
   const progressBar = document.createElement('div');
@@ -294,17 +302,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  /* ── PAGE TRANSITIONS ── */
-  document.querySelectorAll('a[href]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href || href.startsWith('http') || href.startsWith('#') ||
-        href.startsWith('tel:') || href.startsWith('mailto:') || link.target === '_blank') return;
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.body.classList.add('page-exiting');
-      setTimeout(() => { window.location.href = href; }, 280);
+  /* ── PAGE TRANSITIONS (desktop only — avoids bfcache opacity bug on mobile) ── */
+  if (!isMobile) {
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('http') || href.startsWith('#') ||
+          href.startsWith('tel:') || href.startsWith('mailto:') || link.target === '_blank') return;
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.body.classList.add('page-exiting');
+        setTimeout(() => { window.location.href = href; }, 280);
+      });
     });
-  });
+  }
 
   /* ── TYPEWRITER ── */
   document.querySelectorAll('.typewriter').forEach(el => {
@@ -319,12 +329,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 100);
   });
 
-  /* ── HERO PARALLAX ── */
-  const heroImg = document.querySelector('.hero-image');
-  if (heroImg) {
-    window.addEventListener('scroll', () => {
-      heroImg.style.transform = `translateY(${window.scrollY * 0.05}px)`;
-    }, { passive: true });
+  /* ── HERO PARALLAX (desktop only) ── */
+  if (!isMobile) {
+    const heroImg = document.querySelector('.hero-image');
+    if (heroImg) {
+      window.addEventListener('scroll', () => {
+        heroImg.style.transform = `translateY(${window.scrollY * 0.05}px)`;
+      }, { passive: true });
+    }
   }
 
   /* ── FAQ ACCORDION ── */
