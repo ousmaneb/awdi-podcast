@@ -1958,9 +1958,7 @@ svg { flex-shrink: 0; }
 }
 @keyframes ripple { to { transform: scale(4); opacity: 0; } }
 
-/* Page transitions */
-body { transition: opacity 0.28s ease; }
-body.page-exiting { opacity: 0; pointer-events: none; }
+/* Page transitions removed — were causing header visibility issues */
 
 /* ─────────────────────────────────────────────────────
    23. MOBILE RESPONSIVE
@@ -2145,19 +2143,22 @@ body.page-exiting { opacity: 0; pointer-events: none; }
   * { -webkit-text-fill-color: unset; }
 }
 
+/* Drawer header only visible inside the mobile nav drawer */
+.nav-drawer-header { display: none; }
+
 /* Nav overlay */
 .nav-overlay {
+  display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.55);
   z-index: 997;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
 }
-.nav-overlay.show { opacity: 1; pointer-events: auto; }
+.nav-overlay.show {
+  display: block;
+}
 
 /* ─────────────────────────────────────────────────────
    24. VARIABLE ALIASES + MISSING COMPONENTS

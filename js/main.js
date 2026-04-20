@@ -12,10 +12,6 @@ function showToast(message) {
   setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 400); }, 3000);
 }
 
-/* ── bfcache: remove page-exiting on restore ── */
-window.addEventListener('pageshow', (e) => {
-  if (e.persisted) document.body.classList.remove('page-exiting');
-});
 
 // ─────────────────────────────────────────────────────
 // RENDER FUNCTIONS — all content comes from AWDI_DATA
@@ -275,9 +271,6 @@ function renderFAQ() {
 // ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* Safety: remove any stuck page-exiting class */
-  document.body.classList.remove('page-exiting');
-
   /* ── MOBILE DETECTION ── */
   const isMobile = window.innerWidth <= 768;
 
@@ -519,19 +512,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* ── PAGE TRANSITIONS (desktop only — avoids bfcache opacity bug on mobile) ── */
-  if (!isMobile) {
-    document.querySelectorAll('a[href]').forEach(link => {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('http') || href.startsWith('#') ||
-          href.startsWith('tel:') || href.startsWith('mailto:') || link.target === '_blank') return;
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        document.body.classList.add('page-exiting');
-        setTimeout(() => { window.location.href = href; }, 280);
-      });
-    });
-  }
 
   /* ── TOAST UTILITY ── */
   window.showToast = (msg, type = 'success') => {
