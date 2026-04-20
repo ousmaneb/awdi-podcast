@@ -47,6 +47,13 @@
 
 [data-theme="dark"] .nav-links { background: var(--canvas-2) !important; }
 
+[data-theme="dark"] .site-footer {
+  background: var(--canvas-2) !important;
+  border-top-color: var(--border) !important;
+}
+[data-theme="dark"] .footer-grid { border-bottom-color: var(--border) !important; }
+
+/* logo2.png = dark-mode logo */
 [data-theme="dark"] .logo-dark  { display: inline-block !important; }
 [data-theme="dark"] .logo-light { display: none !important; }
 

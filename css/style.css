@@ -1572,8 +1572,8 @@ svg { flex-shrink: 0; }
    20. FOOTER
 ───────────────────────────────────────────────────── */
 .site-footer {
-  background: var(--ink);
-  color: rgba(255,255,255,0.6);
+  background: var(--white);
+  border-top: 1px solid var(--border-2);
   padding: var(--s8) 0 var(--s5);
 }
 
@@ -1588,25 +1588,25 @@ svg { flex-shrink: 0; }
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: var(--s6);
   padding-bottom: var(--s6);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid var(--border-2);
   margin-bottom: var(--s4);
 }
 
-.footer-logo-link img { height: 60px; width: auto; opacity: 0.9; margin-bottom: var(--s3); }
+.footer-logo-link img { height: 60px; width: auto; margin-bottom: var(--s3); }
 
 .footer-tagline {
   font-size: var(--t-xs);
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: var(--ink-4);
   margin-bottom: var(--s2);
 }
 
 .footer-desc {
   font-size: var(--t-sm);
   line-height: 1.7;
-  color: rgba(255,255,255,0.45);
+  color: var(--ink-3);
   margin-bottom: var(--s4);
 }
 
@@ -1618,8 +1618,8 @@ svg { flex-shrink: 0; }
 .footer-badges span {
   font-size: var(--t-xs);
   font-weight: 600;
-  color: rgba(110,231,160,0.7);
-  border: 1px solid rgba(110,231,160,0.2);
+  color: var(--green);
+  border: 1px solid rgba(46,155,91,0.25);
   border-radius: var(--r-full);
   padding: 3px 10px;
   letter-spacing: 0.04em;
@@ -1630,11 +1630,11 @@ svg { flex-shrink: 0; }
   align-items: center;
   gap: 8px;
   font-size: var(--t-sm);
-  color: rgba(255,255,255,0.5);
+  color: var(--ink-3);
   margin-bottom: var(--s3);
   transition: color var(--t-fast);
 }
-.footer-email:hover { color: rgba(255,255,255,0.85); }
+.footer-email:hover { color: var(--green); }
 
 .footer-socials {
   display: flex;
@@ -1643,19 +1643,19 @@ svg { flex-shrink: 0; }
 .footer-social-icon {
   width: 34px; height: 34px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,0.45);
+  color: var(--ink-3);
   transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
 }
-.footer-social-icon:hover { color: var(--white); border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); }
+.footer-social-icon:hover { color: var(--green); border-color: var(--green); background: var(--green-pale); }
 
 .footer-nav-col h5 {
   font-size: var(--t-xs);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
+  color: var(--ink);
   margin-bottom: var(--s3);
 }
 
@@ -1663,10 +1663,10 @@ svg { flex-shrink: 0; }
 
 .footer-nav-col a {
   font-size: var(--t-sm);
-  color: rgba(255,255,255,0.45);
+  color: var(--ink-3);
   transition: color var(--t-fast);
 }
-.footer-nav-col a:hover { color: rgba(255,255,255,0.85); }
+.footer-nav-col a:hover { color: var(--green); }
 
 .footer-bottom {
   display: flex;
@@ -1678,7 +1678,7 @@ svg { flex-shrink: 0; }
 
 .footer-copyright {
   font-size: var(--t-xs);
-  color: rgba(255,255,255,0.3);
+  color: var(--ink-4);
 }
 
 .footer-legal {
@@ -1687,10 +1687,10 @@ svg { flex-shrink: 0; }
 }
 .footer-legal a {
   font-size: var(--t-xs);
-  color: rgba(255,255,255,0.3);
+  color: var(--ink-4);
   transition: color var(--t-fast);
 }
-.footer-legal a:hover { color: rgba(255,255,255,0.6); }
+.footer-legal a:hover { color: var(--ink); }
 
 /* ─────────────────────────────────────────────────────
    21. PAGE HEROES (inner pages)
